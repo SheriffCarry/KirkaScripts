@@ -14,9 +14,9 @@ This is a list of userscripts from Sheriff. All were made by me and they will be
 - Restart BKC/Press F4
 
 # Userscripts:
-- [inventory calculator: Shows how much your inventory is worth](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/inventory_calculator.js) This uses the price list from [yzzz.mtz](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/tradingprices.js) and the quicksell prices
+- [inventory calculator: Shows how much your inventory is worth](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/inventory_calculator.js) This uses the price list from [yzzz.mtz](https://docs.google.com/spreadsheets/d/1VqX9kwJx0WlHWKCJNGyIQe33APdUSXz0hEFk6x2-3bU/edit#gid=0) and the quicksell prices
 - [csstoggle: Live updates in button & input](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/csstoggle.js)
-- [tradingprices: Shows you in the global chat the prices of skins](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/tradingprices.js) This uses the price list from [yzzz.mtz](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/tradingprices.js)
+- [tradingprices: Shows you in the global chat the prices of skins](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/tradingprices.js) This uses the price list from [yzzz.mtz](https://docs.google.com/spreadsheets/d/1VqX9kwJx0WlHWKCJNGyIQe33APdUSXz0hEFk6x2-3bU/edit#gid=0)
 - [playercount: Shows the playercount in the menu](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/playercount.js)
 
 # Scripts that are probably ToS, but not confirmed
