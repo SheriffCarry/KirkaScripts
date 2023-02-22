@@ -21,6 +21,7 @@ This is a list of userscripts from Sheriff. All were made by me and they will be
 - Skinchanger (stays private)
 - Cords (shows your own position in the "FPS/Ping menu"
 - Autoclaim (claims quests + skips ad automatically)
+- Streamsnipe script (helps you streamsnipe people lol)
 
 # Scripts I have that violate the Kirka ToS.
 The userscripts stay private
