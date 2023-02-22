@@ -15,6 +15,7 @@ This is a list of userscripts from Sheriff. All were made by me and they will be
 
 # Userscripts:
 - [inventory calculator: Shows how much your inventory is worth](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/inventory_calculator.js)
+- [csstoggle: Live updates in button & input](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/csstoggle.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
