@@ -18,6 +18,7 @@ This is a list of userscripts from Sheriff. All were made by me and they will be
 - [csstoggle: Live updates in button & input](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/csstoggle.js)
 - [tradingprices: Shows you in the global chat the prices of skins](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/tradingprices.js) This uses the price list from [yzzz.mtz](https://docs.google.com/spreadsheets/d/1VqX9kwJx0WlHWKCJNGyIQe33APdUSXz0hEFk6x2-3bU/edit#gid=0)
 - [playercount: Shows the playercount in the menu](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/playercount.js)
+- [creationdate: Shows account creationdate + clan creationdate](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/creationdate.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
