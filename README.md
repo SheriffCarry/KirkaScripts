@@ -15,3 +15,13 @@ This is a list of userscripts from Sheriff. All were made by me and they will be
 
 # Userscripts:
 - [inventory calculator: Shows how much your inventory is worth](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/inventory_calculator.js)
+
+# Scripts that are probably ToS, but not confirmed
+- Skinchanger (stays private)
+- Cords (shows your own position in the "FPS/Ping menu"
+
+# Scripts I have that violate the Kirka ToS.
+The userscripts stay private
+- Alt manager (easily lets you swap the account)
+- Spectatorcount (shows how many spectators are in your game)
+- Bots (they will go into your game and stay afk)
