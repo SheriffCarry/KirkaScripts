@@ -20,6 +20,7 @@ This is a list of userscripts from Sheriff. All were made by me and they will be
 - [playercount: Shows the playercount in the menu](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/playercount.js)
 - [creationdate: Shows account creationdate + clan creationdate](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/creationdate.js)
 - [betterserverbrowser: Filters for serverbrowser](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/betterserverbrowser.js) (this script isn't best for usage. Best for usage version takes many FPS)
+- [lefthandledtoggle: Live swap right hand to left via keybind](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/betterserverbrowser.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
