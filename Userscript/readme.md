@@ -5,7 +5,7 @@
 ## tradingprices
 
 ## playercount
-
+![playercount](https://cdn.discordapp.com/attachments/619378452600193024/1078210613874020382/image.png)
 ## creationdate
 
 ## betterserverbrowser
