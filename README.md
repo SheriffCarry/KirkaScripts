@@ -8,6 +8,12 @@ Discord: CarrySheriff#4911
 - Clan lookup (view other clan pages)
 - Improve tradingprices (shows easily if profit/loss for trades)
 - Add [yzzz.mtz](https://docs.google.com/spreadsheets/d/1VqX9kwJx0WlHWKCJNGyIQe33APdUSXz0hEFk6x2-3bU/edit#gid=0)'s price list to inventory (for selling & to market for buying)
+##### Requested Stuff:
+- Show price in inventory
+- Show total amount of available quests, availabe exp, availabe coins (daily & hourly)
+- Kirka "bundles" estimated selling prices
+- Current prices for market items (maybe highlight skins that are cheaper/more expensive then est price)
+- Clan page show score per week (information for me: it will be average)
 
 # How to use:
 -  [Downloads BKC (Better-Kirka-Client)](https://github.com/42infi/better-kirka-client/releases)
