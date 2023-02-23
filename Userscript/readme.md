@@ -1,5 +1,5 @@
 ## inventory_calculator
-
+![inventory_calculator](https://cdn.discordapp.com/attachments/619378452600193024/1078211351853416459/image.png)
 ## csstoggle
 - live css updates
 ## tradingprices
