@@ -1,9 +1,9 @@
 # KirkaScripts
 
 This is a list of userscripts from Sheriff. All were made by me and they will be auto-updated. I got the unobfuscated userscripts in a private repo.
-## Script Requests
+### Script Requests
 Discord: CarrySheriff#4911
-## My todo
+### My todo
 - Playerlookup (idea completely ripped of [irrvlo from namelessclient](https://namelesshub.com/)) [I personally find it useless, cuz you need to remember a tag for it]
 - Clan lookup (view other clan pages)
 - Improve tradingprices (shows easily if profit/loss for trades)
