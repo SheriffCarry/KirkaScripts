@@ -13,3 +13,5 @@
 ![betterserverbrowser](https://cdn.discordapp.com/attachments/619378452600193024/1078210001505632346/image.png)
 ## lefthandtoggle
 - live update for lefthand via keybind
+## profile_checker
+![profile_checker](https://cdn.discordapp.com/attachments/619378452600193024/1078720955066618068/image.png)
