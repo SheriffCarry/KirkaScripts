@@ -34,6 +34,7 @@ Discord: CarrySheriff#4911
 - [creationdate: Shows account creationdate + clan creationdate](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/creationdate.js)
 - [betterserverbrowser: Filters for serverbrowser](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/betterserverbrowser.js) (this script isn't best for usage. Best for usage version takes many FPS)
 - [lefthandtoggle: Live swap right hand to left via keybind](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/lefthandtoggle.js)
+- [profile_checker: lets you check other profiles via the hub](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/profile_checker.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
