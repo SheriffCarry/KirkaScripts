@@ -17,3 +17,5 @@
 ![profile_checker](https://cdn.discordapp.com/attachments/619378452600193024/1078763574836596869/image.png)
 ## clan_checker
 ![clan_checker](https://cdn.discordapp.com/attachments/619378452600193024/1078763473032462508/image.png)
+## streaks
+![streaks](https://cdn.discordapp.com/attachments/619378452600193024/1078836943531556945/image.png)
