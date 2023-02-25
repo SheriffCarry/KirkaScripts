@@ -12,7 +12,7 @@ Discord: CarrySheriff#4911
 - Kirka "bundles" estimated selling prices
 - Current prices for market items (maybe highlight skins that are cheaper/more expensive then est price)
 - Clan page show score per week (information for me: it will be average)
-- Ingame score & killstreak field
+- Ingame score field
 
 # How to use:
 -  [Downloads BKC (Better-Kirka-Client)](https://github.com/42infi/better-kirka-client/releases)
