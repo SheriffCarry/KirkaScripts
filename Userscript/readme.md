@@ -19,3 +19,5 @@
 ![clan_checker](https://cdn.discordapp.com/attachments/619378452600193024/1078763473032462508/image.png)
 ## streaks
 ![streaks](https://cdn.discordapp.com/attachments/619378452600193024/1078836943531556945/image.png)
+## scorewithouttab
+![scorewithouttab](https://cdn.discordapp.com/attachments/1048572235704696924/1078840696154357891/image.png)
