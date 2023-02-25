@@ -12,7 +12,6 @@ Discord: CarrySheriff#4911
 - Kirka "bundles" estimated selling prices
 - Current prices for market items (maybe highlight skins that are cheaper/more expensive then est price)
 - Clan page show score per week (information for me: it will be average)
-- Ingame score field
 
 # How to use:
 -  [Downloads BKC (Better-Kirka-Client)](https://github.com/42infi/better-kirka-client/releases)
@@ -36,6 +35,7 @@ Discord: CarrySheriff#4911
 - [profile_checker: lets you check other profiles via the hub](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/profile_checker.js)
 - [clan_checker: lets you check other profiles via the hub](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/clan_checker.js)
 - [streaks: see ingame your killstreak](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/streaks.js)
+- [scorewithouttab: see ingame your score without pressing tab](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/scorewithouttab.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
