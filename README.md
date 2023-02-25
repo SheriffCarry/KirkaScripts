@@ -36,6 +36,7 @@ Discord: CarrySheriff#4911
 - [streaks: see ingame your killstreak](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/streaks.js)
 - [scorewithouttab: see ingame your score without pressing tab](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/scorewithouttab.js)
 - [7dayactivity: shows in clan page estimates score in the last 7 days](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/7dayactivity.js)
+- [chatfix: Lets you get out of the chat menu by clicking enter](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/chatfix.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
