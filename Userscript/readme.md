@@ -21,3 +21,5 @@
 ![streaks](https://cdn.discordapp.com/attachments/619378452600193024/1078836943531556945/image.png)
 ## scorewithouttab
 ![scorewithouttab](https://cdn.discordapp.com/attachments/1048572235704696924/1078840696154357891/image.png)
+## 7dayactivity
+![7dayactivity](https://cdn.discordapp.com/attachments/619378452600193024/1078849446030356590/image.png)
