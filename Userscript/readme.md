@@ -4,8 +4,11 @@
 - live css updates
 ## tradingprices
 ![tradingprices](https://cdn.discordapp.com/attachments/619378452600193024/1079863959450034237/image.png)
+
 Profit = 110%+ of your skins
+
 Even = 110%-90% of your skins
+
 Lost/Scam = <90% of your skins
 ## playercount
 ![playercount](https://cdn.discordapp.com/attachments/619378452600193024/1078210613874020382/image.png)
