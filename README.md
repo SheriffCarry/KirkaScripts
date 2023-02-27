@@ -4,7 +4,6 @@ This is a list of userscripts from Sheriff. All were made by me and they will be
 ### Script Requests
 Discord: CarrySheriff#4911
 ### My todo
-- Improve tradingprices (shows easily if profit/loss for trades)
 - Add [yzzz.mtz](https://docs.google.com/spreadsheets/d/1VqX9kwJx0WlHWKCJNGyIQe33APdUSXz0hEFk6x2-3bU/edit#gid=0)'s price list to inventory (for selling & to market for buying)
 - Do some requested Stuff
 ##### Requested Stuff:
