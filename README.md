@@ -36,7 +36,7 @@ Discord: CarrySheriff#4911
 - [scorewithouttab: see ingame your score without pressing tab](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/scorewithouttab.js)
 - [7dayactivity: shows in clan page estimates score in the last 7 days](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/7dayactivity.js)
 - [chatfix: Lets you get out of the chat menu by clicking enter](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/chatfix.js)
-- [inventory_prices: Lets you see prices from skins in your inventory.(https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/inventory_prices.js) This uses the price list from [yzzz.mtz](https://docs.google.com/spreadsheets/d/1VqX9kwJx0WlHWKCJNGyIQe33APdUSXz0hEFk6x2-3bU/edit#gid=0)
+- [inventory_prices: Lets you see prices from skins in your inventory.](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/inventory_prices.js) This uses the price list from [yzzz.mtz](https://docs.google.com/spreadsheets/d/1VqX9kwJx0WlHWKCJNGyIQe33APdUSXz0hEFk6x2-3bU/edit#gid=0)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
