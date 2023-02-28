@@ -6,7 +6,6 @@ Discord: CarrySheriff#4911
 ### My todo
 - Do some requested Stuff
 ##### Requested Stuff:
-- Show price in inventory
 - Show total amount of available quests, availabe exp, availabe coins (daily & hourly)
 - Kirka "bundles" estimated selling prices
 - Current prices for market items (maybe highlight skins that are cheaper/more expensive then est price)
