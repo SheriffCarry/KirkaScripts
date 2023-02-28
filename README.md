@@ -9,6 +9,7 @@ Discord: CarrySheriff#4911
 - Show total amount of available quests, availabe exp, availabe coins (daily & hourly)
 - Kirka "bundles" estimated selling prices
 - Current prices for market items (maybe highlight skins that are cheaper/more expensive then est price)
+- K/D calculator
 
 # How to use:
 -  [Downloads BKC (Better-Kirka-Client)](https://github.com/42infi/better-kirka-client/releases)
