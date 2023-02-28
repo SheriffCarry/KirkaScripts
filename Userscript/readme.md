@@ -31,3 +31,5 @@ Lost/Scam = <90% of your skins
 ![7dayactivity](https://cdn.discordapp.com/attachments/619378452600193024/1078849446030356590/image.png)
 ## chatfix
 - Lets you get out of the chat menu by clicking enter (no I won't make a custom key adition, cuz they are stored like that 'mwNMWn/wmNMn/WNwnM: ""wmMWn""' and I would need a full list for translation into it. Fuck that shit use enter or get skill)
+## inventory_prices
+![inventory_prices](https://cdn.discordapp.com/attachments/619378452600193024/1080128479221272666/image.png)
