@@ -39,3 +39,5 @@ Lost/Scam = <90% of your skins
 ![bundleprices](https://cdn.discordapp.com/attachments/619378452600193024/1080496827150905344/image.png)
 ## marketpricing
 ![marketpricing](https://user-images.githubusercontent.com/125906244/222219715-ba0c2bc2-0220-4881-87b9-3e4c21ddfdcc.png)
+## dreamkdr
+![dreamkdr](https://user-images.githubusercontent.com/125906244/222250474-6bc13a7b-dce2-4c75-842b-f11cd7fe4d0d.png)
