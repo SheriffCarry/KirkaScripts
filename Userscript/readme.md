@@ -36,4 +36,4 @@ Lost/Scam = <90% of your skins
 ## stagingservers
 ![stagingservers](https://cdn.discordapp.com/attachments/619378452600193024/1080146763383591022/image.png)
 ## bundleprices
-![bundleprices](https://cdn.discordapp.com/attachments/619378452600193024/1080496392126087188/image.png)
+![bundleprices](https://cdn.discordapp.com/attachments/619378452600193024/1080496827150905344/image.png)
