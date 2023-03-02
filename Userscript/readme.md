@@ -1,9 +1,10 @@
 ## inventory_calculator
-![inventory_calculator](https://cdn.discordapp.com/attachments/619378452600193024/1078211351853416459/image.png)
+![inventory_calculator](https://user-images.githubusercontent.com/125906244/222392475-9117630a-8ca6-4781-b220-a4905fd40ece.png)
 ## csstoggle
 - live css updates
 ## tradingprices
-![tradingprices](https://cdn.discordapp.com/attachments/619378452600193024/1079863959450034237/image.png)
+![tradingprices](https://user-images.githubusercontent.com/125906244/222392516-5dd96e23-d674-439d-af0c-4d42f2f2d10f.png)
+
 
 Profit = 110%+ of your skins
 
@@ -11,18 +12,18 @@ Even = 110%-90% of your skins
 
 Lost/Scam = <90% of your skins
 ## playercount
-![playercount](https://cdn.discordapp.com/attachments/619378452600193024/1078210613874020382/image.png)
+![playercount](https://user-images.githubusercontent.com/125906244/222392551-f17f433c-449b-46b2-9e95-ba556337a79a.png)
 ## creationdate
-![creationdate user](https://cdn.discordapp.com/attachments/619378452600193024/1078210914827903066/image.png)
-![creationdate clan](https://cdn.discordapp.com/attachments/619378452600193024/1078210981953536130/image.png)
+![creationdate user](https://user-images.githubusercontent.com/125906244/222392599-9ab624d3-13ae-4981-9981-becb59152089.png)
+![creationdate clan](https://user-images.githubusercontent.com/125906244/222392622-1d32ee52-4b7d-484c-8dc9-00b6df6153f9.png)
 ## betterserverbrowser
-![betterserverbrowser](https://cdn.discordapp.com/attachments/619378452600193024/1078210001505632346/image.png)
+![betterserverbrowser](https://user-images.githubusercontent.com/125906244/222392682-731b2782-8e77-4989-b767-5973cb4565c9.png)
 ## lefthandtoggle
 - live update for lefthand via keybind
 ## profile_checker
-![profile_checker](https://cdn.discordapp.com/attachments/619378452600193024/1078763574836596869/image.png)
+![profile_checker](https://user-images.githubusercontent.com/125906244/222392739-c49e5071-f9b1-43b9-9502-b6009c05fd29.png)
 ## clan_checker
-![clan_checker](https://cdn.discordapp.com/attachments/619378452600193024/1078763473032462508/image.png)
+![clan_checker](https://user-images.githubusercontent.com/125906244/222392762-2e54033d-e003-48ba-a926-76fd58e9d283.png)
 ## streaks
 ![streaks](https://cdn.discordapp.com/attachments/619378452600193024/1078836943531556945/image.png)
 ## scorewithouttab
