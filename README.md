@@ -6,7 +6,6 @@ Discord: CarrySheriff#4911
 ### My todo
 - Do some requested Stuff
 ##### Requested Stuff:
-- HS Ratio
 - /tracker copy ingame
 
 # How to use:
@@ -41,6 +40,7 @@ Discord: CarrySheriff#4911
 - [dreamkdr: calculates goal to dream kdr](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/dreamkdr.js)
 - [questinfo: shows you more info for the quests](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/questinfo.js)
 - [kpgcalc: calculates kpg on profile](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/kpg.js)
+- [hsratio: calculates hs ratio on profile](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/hsratio.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
