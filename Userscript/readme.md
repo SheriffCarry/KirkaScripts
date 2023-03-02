@@ -25,19 +25,20 @@ Lost/Scam = <90% of your skins
 ## clan_checker
 ![clan_checker](https://user-images.githubusercontent.com/125906244/222392762-2e54033d-e003-48ba-a926-76fd58e9d283.png)
 ## streaks
-![streaks](https://cdn.discordapp.com/attachments/619378452600193024/1078836943531556945/image.png)
+![streaks](https://user-images.githubusercontent.com/125906244/222392877-d0b58271-a3ba-4c89-8c44-52395cb8534b.png)
 ## scorewithouttab
-![scorewithouttab](https://cdn.discordapp.com/attachments/1048572235704696924/1078840696154357891/image.png)
+![scorewithouttab](https://user-images.githubusercontent.com/125906244/222392899-d5ceec9a-4db4-4f35-a484-3ef9e6fcdd5d.png)
 ## 7dayactivity
-![7dayactivity](https://cdn.discordapp.com/attachments/619378452600193024/1078849446030356590/image.png)
+![7dayactivity](https://user-images.githubusercontent.com/125906244/222392918-23ad1307-c171-43e5-8735-475f181c6c04.png)
 ## chatfix
 - Lets you get out of the chat menu by clicking enter (no I won't make a custom key adition, cuz they are stored like that 'mwNMWn/wmNMn/WNwnM: ""wmMWn""' and I would need a full list for translation into it. Fuck that shit use enter or get skill)
 ## inventory_prices
-![inventory_prices](https://cdn.discordapp.com/attachments/619378452600193024/1080128479221272666/image.png)
+![inventory_prices](https://user-images.githubusercontent.com/125906244/222392994-e70604f0-c0be-4bbd-9f7d-1618a91e35f0.png)
 ## stagingservers
-![stagingservers](https://cdn.discordapp.com/attachments/619378452600193024/1080146763383591022/image.png)
+![stagingservers](https://user-images.githubusercontent.com/125906244/222393043-59a5f138-11c6-4673-8ff3-988fa9eeef4e.png)
 ## bundleprices
 ![bundleprices](https://cdn.discordapp.com/attachments/619378452600193024/1080496827150905344/image.png)
+![bundleprices](https://user-images.githubusercontent.com/125906244/222393093-e1245d95-9006-4178-bc3e-74d6177a9c89.png)
 ## marketpricing
 ![marketpricing](https://user-images.githubusercontent.com/125906244/222219715-ba0c2bc2-0220-4881-87b9-3e4c21ddfdcc.png)
 ## dreamkdr
