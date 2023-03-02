@@ -6,7 +6,8 @@ Discord: CarrySheriff#4911
 ### My todo
 - Do some requested Stuff
 ##### Requested Stuff:
-- Nothing anymore lol
+- HS Ratio
+- /tracker copy ingame
 
 # How to use:
 -  [Downloads BKC (Better-Kirka-Client)](https://github.com/42infi/better-kirka-client/releases)
