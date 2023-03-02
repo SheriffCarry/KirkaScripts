@@ -39,6 +39,7 @@ Discord: CarrySheriff#4911
 - [marketpricing: shows prices in market](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/marketpricing.js) This uses the price list from [yzzz.mtz](https://docs.google.com/spreadsheets/d/1VqX9kwJx0WlHWKCJNGyIQe33APdUSXz0hEFk6x2-3bU/edit#gid=0)
 - [dreamkdr: calculates goal to dream kdr](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/dreamkdr.js)
 - [questinfo: shows you more info for the quests](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/questinfo.js)
+- [kpgcalc: calculates kpg on profile](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/kpg.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
