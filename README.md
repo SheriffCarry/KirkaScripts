@@ -6,7 +6,7 @@ Discord: CarrySheriff#4911
 ### My todo
 - Do some requested Stuff
 ##### Requested Stuff:
-- Show total amount of available quests, availabe exp, availabe coins (daily & hourly)
+- Nothing anymore lol
 
 # How to use:
 -  [Downloads BKC (Better-Kirka-Client)](https://github.com/42infi/better-kirka-client/releases)
@@ -38,6 +38,7 @@ Discord: CarrySheriff#4911
 - [bundleprices: shows prices for bundle](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/bundleprices.js) This uses the price list from [yzzz.mtz](https://docs.google.com/spreadsheets/d/1VqX9kwJx0WlHWKCJNGyIQe33APdUSXz0hEFk6x2-3bU/edit#gid=0)
 - [marketpricing: shows prices in market](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/marketpricing.js) This uses the price list from [yzzz.mtz](https://docs.google.com/spreadsheets/d/1VqX9kwJx0WlHWKCJNGyIQe33APdUSXz0hEFk6x2-3bU/edit#gid=0)
 - [dreamkdr: calculates goal to dream kdr](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/dreamkdr.js)
+- [questinfo: shows you more info for the quests](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/questinfo.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
