@@ -41,3 +41,7 @@ Lost/Scam = <90% of your skins
 ![marketpricing](https://user-images.githubusercontent.com/125906244/222219715-ba0c2bc2-0220-4881-87b9-3e4c21ddfdcc.png)
 ## dreamkdr
 ![dreamkdr](https://user-images.githubusercontent.com/125906244/222250474-6bc13a7b-dce2-4c75-842b-f11cd7fe4d0d.png)
+## questinfo
+![questinfo](https://user-images.githubusercontent.com/125906244/222348891-e5563fd7-783a-4096-af25-e2750916c33a.png)
+![questinfo](https://user-images.githubusercontent.com/125906244/222348910-fcdf6085-4162-4379-9d51-8a9a5cf434bf.png)
+![questinfo](https://user-images.githubusercontent.com/125906244/222348926-45ccb268-b4a2-429b-a48a-5fade690ca0d.png)
