@@ -7,6 +7,8 @@ Discord: CarrySheriff#4911
 - Do some requested Stuff
 ##### Requested Stuff:
 - /tracker copy ingame
+- always show tab (css is not my issue then)
+- search bar in inventory
 
 # How to use:
 -  [Downloads BKC (Better-Kirka-Client)](https://github.com/42infi/better-kirka-client/releases)
