@@ -51,3 +51,6 @@ Lost/Scam = <90% of your skins
 ![kpg](https://user-images.githubusercontent.com/125906244/222392372-0bea7214-7525-41c4-b50d-c3dbc5e3e1ab.png)
 ## hsratio
 ![hsratio](https://user-images.githubusercontent.com/125906244/222424470-590d65cc-2f64-47cf-8a54-70244ae24cfb.png)
+## SkinViewer
+[![SkinViewer](https://user-images.githubusercontent.com/125906244/224493974-107357d0-360a-42e7-b5d5-5df285da9bd4.png)](https://user-images.githubusercontent.com/125906244/224493925-0efb715b-546b-46a3-8385-4624c3680de9.mp4)
+
