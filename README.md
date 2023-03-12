@@ -45,6 +45,7 @@ Discord: CarrySheriff#4911
 - [kpgcalc: calculates kpg on profile](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/kpg.js)
 - [hsratio: calculates hs ratio on profile](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/hsratio.js)
 - [SkinViewer: lets you view skins easier](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/SkinViewer.js) This uses [my KirkaSkins list](https://github.com/SheriffCarry/KirkaSkins)
+- [BetterChatScroll: lets you scroll using the ArrowUp and ArrowDown key](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/BetterChatScroll.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
