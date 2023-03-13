@@ -5,7 +5,6 @@ This is a list of userscripts from Sheriff. All were made by me and they will be
 Discord: CarrySheriff#4911
 ### My todo
 - Do some requested Stuff
-- BetterChatScroll
 ##### Requested Stuff:
 - /tracker copy ingame
 - always show tab (css is not my issue then)
