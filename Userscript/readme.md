@@ -55,3 +55,10 @@ Lost/Scam = <90% of your skins
 [![SkinViewer](https://user-images.githubusercontent.com/125906244/224493974-107357d0-360a-42e7-b5d5-5df285da9bd4.png)](https://user-images.githubusercontent.com/125906244/224493925-0efb715b-546b-46a3-8385-4624c3680de9.mp4)
 ## BetterChatScroll
 - Lets you scroll using the ArrowUp and ArrowDown key in the Kirka ingame chat
+## ValidTradesHighlighter
+- Scam trade
+
+![NoValidTrade](https://user-images.githubusercontent.com/125906244/224711726-1874179e-8d32-4488-982b-4c431549fc70.png)
+- Real Trade highlighted
+
+![ValidTradesHighlighter](https://user-images.githubusercontent.com/125906244/224711834-d95586e1-1cfc-47ce-881a-8d740b99952e.png)
