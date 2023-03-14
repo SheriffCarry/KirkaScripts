@@ -7,7 +7,6 @@ Discord: CarrySheriff#4911
 - Do some requested Stuff
 ##### Requested Stuff:
 - /tracker copy ingame
-- search bar in inventory
 
 # How to use:
 -  [Downloads BKC (Better-Kirka-Client)](https://github.com/42infi/better-kirka-client/releases)
@@ -46,6 +45,7 @@ Discord: CarrySheriff#4911
 - [BetterChatScroll: lets you scroll using the ArrowUp and ArrowDown key](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/BetterChatScroll.js)
 - ValidTradesHighlighter: highlights in chat real trades: This script is included in the game, ignore it.
 - [AlwaysShowTab: always shows tab lol](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/AlwaysShowTab.js)
+- [InventorySearch.js: adds a search bar in the inventory](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/InventorySearch.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
