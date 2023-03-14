@@ -7,7 +7,6 @@ Discord: CarrySheriff#4911
 - Do some requested Stuff
 ##### Requested Stuff:
 - /tracker copy ingame
-- always show tab (css is not my issue then)
 - search bar in inventory
 
 # How to use:
@@ -46,6 +45,7 @@ Discord: CarrySheriff#4911
 - [SkinViewer: lets you view skins easier](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/SkinViewer.js) This uses [my KirkaSkins list](https://github.com/SheriffCarry/KirkaSkins)
 - [BetterChatScroll: lets you scroll using the ArrowUp and ArrowDown key](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/BetterChatScroll.js)
 - ValidTradesHighlighter: highlights in chat real trades: This script is included in the game, ignore it.
+- [AlwaysShowTab: always shows tab lol](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/AlwaysShowTab.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
