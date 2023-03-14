@@ -45,7 +45,7 @@ Discord: CarrySheriff#4911
 - [hsratio: calculates hs ratio on profile](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/hsratio.js)
 - [SkinViewer: lets you view skins easier](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/SkinViewer.js) This uses [my KirkaSkins list](https://github.com/SheriffCarry/KirkaSkins)
 - [BetterChatScroll: lets you scroll using the ArrowUp and ArrowDown key](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/BetterChatScroll.js)
-- [ValidTradesHighlighter: highlights in chat real trades](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/ValidTradesHighlighter.js)
+- ValidTradesHighlighter: highlights in chat real trades: This script is included in the game, ignore it.
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
