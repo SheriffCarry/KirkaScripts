@@ -62,3 +62,5 @@ Lost/Scam = <90% of your skins
 - Real Trade highlighted
 
 ![ValidTradesHighlighter](https://user-images.githubusercontent.com/125906244/224711834-d95586e1-1cfc-47ce-881a-8d740b99952e.png)
+## AlwaysShowTab
+- Just shows always the tab menu lol
