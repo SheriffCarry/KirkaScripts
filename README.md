@@ -4,7 +4,8 @@ This is a list of userscripts from Sheriff. All were made by me and they will be
 ### Script Requests
 Discord: CarrySheriff#4911
 ### My todo
-- Do some requested Stuff
+- Do some requested Stuff 
+- some changes to players look in menu and stuff like thaz
 ##### Requested Stuff:
 - /tracker copy ingame (not gonna do it)
 
