@@ -66,3 +66,6 @@ Lost/Scam = <90% of your skins
 - Just shows always the tab menu lol
 ## KirkaFix
 - fixes kirka when xip decides to host the localhost
+## MapNames
+![MapNames](https://user-images.githubusercontent.com/125906244/225959620-44d5b1db-4740-41cb-bd60-772a0190f4af.png)
+
