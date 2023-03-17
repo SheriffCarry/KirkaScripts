@@ -5,9 +5,11 @@ This is a list of userscripts from Sheriff. All were made by me and they will be
 Discord: CarrySheriff#4911
 ### My todo
 - Do some requested Stuff 
-- some changes to players look in menu and stuff like thaz
+- some changes to players look in menu and stuff like that
+- skinviewer upgrade
 ##### Requested Stuff:
 - /tracker copy ingame (not gonna do it)
+- map names
 
 # How to use:
 -  [Downloads BKC (Better-Kirka-Client)](https://github.com/42infi/better-kirka-client/releases)
