@@ -47,6 +47,7 @@ Discord: CarrySheriff#4911
 - ValidTradesHighlighter: highlights in chat real trades: This script is included in the game, ignore it.
 - [AlwaysShowTab: always shows tab lol](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/AlwaysShowTab.js)
 - [InventorySearch.js: adds a search bar in the inventory](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/InventorySearch.js)
+- [KirkaFix: fixes Kirka issues, when Kirka uses localhost](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/KirkaFix.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
