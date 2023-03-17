@@ -9,7 +9,6 @@ Discord: CarrySheriff#4911
 - skinviewer upgrade
 ##### Requested Stuff:
 - /tracker copy ingame (not gonna do it)
-- map names
 
 # How to use:
 -  [Downloads BKC (Better-Kirka-Client)](https://github.com/42infi/better-kirka-client/releases)
@@ -50,6 +49,7 @@ Discord: CarrySheriff#4911
 - [AlwaysShowTab: always shows tab lol](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/AlwaysShowTab.js)
 - [InventorySearch.js: adds a search bar in the inventory](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/InventorySearch.js)
 - [KirkaFix: fixes Kirka issues, when Kirka uses localhost](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/KirkaFix.js)
+- [MapNames: allows users to give their maps custom names](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/MapNames.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
