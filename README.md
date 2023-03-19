@@ -1,12 +1,13 @@
 # KirkaScripts
 
-This is a list of userscripts from Sheriff. All were made by me and they will be auto-updated. I got the unobfuscated userscripts in a private repo .
+This is a list of userscripts from Sheriff. All were made by me and they will be auto-updated. I got the unobfuscated userscripts in a private repo
 ### Script Requests
 Discord: CarrySheriff#4911
 ### My todo
 - Do some requested Stuff 
 - some changes to players look in menu and stuff like that
 - skinviewer upgrade
+- cords
 ##### Requested Stuff:
 - /tracker copy ingame (not gonna do it)
 
