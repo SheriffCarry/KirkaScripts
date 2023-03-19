@@ -68,4 +68,5 @@ Lost/Scam = <90% of your skins
 - fixes kirka when xip decides to host the localhost
 ## MapNames
 ![MapNames](https://user-images.githubusercontent.com/125906244/225959620-44d5b1db-4740-41cb-bd60-772a0190f4af.png)
-
+## Cords
+![Cords](https://user-images.githubusercontent.com/125906244/226208895-ca488b55-f784-46ad-8dbb-464211890253.png)
