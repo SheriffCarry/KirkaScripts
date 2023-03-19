@@ -1,6 +1,6 @@
 # KirkaScripts
 
-This is a list of userscripts from Sheriff. All were made by me and they will be auto-updated. I got the unobfuscated userscripts in a private repo.
+This is a list of userscripts from Sheriff. All were made by me and they will be auto-updated. I got the unobfuscated userscripts in a private repo .
 ### Script Requests
 Discord: CarrySheriff#4911
 ### My todo
