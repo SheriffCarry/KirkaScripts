@@ -51,6 +51,7 @@ Discord: CarrySheriff#4911
 - [InventorySearch.js: adds a search bar in the inventory](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/InventorySearch.js)
 - [KirkaFix: fixes Kirka issues, when Kirka uses localhost](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/KirkaFix.js)
 - [MapNames: allows users to give their maps custom names](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/MapNames.js)
+- [Cords: gives playerposition](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/Cords.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
