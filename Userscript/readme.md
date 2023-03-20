@@ -70,3 +70,5 @@ Lost/Scam = <90% of your skins
 ![MapNames](https://user-images.githubusercontent.com/125906244/225959620-44d5b1db-4740-41cb-bd60-772a0190f4af.png)
 ## Cords
 ![Cords](https://user-images.githubusercontent.com/125906244/226208895-ca488b55-f784-46ad-8dbb-464211890253.png)
+## TradingEasierAccept
+![TradingEasierAccept](https://user-images.githubusercontent.com/125906244/226402001-58b7bb56-6a85-4859-a9ef-b7a63a9f6a57.png)
