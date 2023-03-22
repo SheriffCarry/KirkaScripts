@@ -54,6 +54,7 @@ Discord: CarrySheriff#4911
 - [Cords: gives playerposition](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/Cords.js)
 - [TradingEasierAccept: adds an onclick to the trading link for easier accepting](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Running%20Code/TradingEasierAccept.js)
 - [0AdsToggle: live update for 0Ads via keybind](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Running%20Code/0AdsToggle.js)
+- [MoreTabstats: more info at tab](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Running%20Code/MoreTabstats.js)
 
 # Scripts that are probably ToS, but not confirmed
 - Skinchanger (stays private)
