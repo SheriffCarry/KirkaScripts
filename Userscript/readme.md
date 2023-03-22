@@ -74,3 +74,5 @@ Lost/Scam = <90% of your skins
 ![TradingEasierAccept](https://user-images.githubusercontent.com/125906244/226402001-58b7bb56-6a85-4859-a9ef-b7a63a9f6a57.png)
 ## 0AdsToggle
 - live update for 0Ads via keybind
+## MoreTabstats
+![MoreTabstats](https://user-images.githubusercontent.com/125906244/227008549-a2b7c7a2-511e-4975-9971-65d08cd41011.png)
