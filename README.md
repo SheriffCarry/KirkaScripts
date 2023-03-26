@@ -7,7 +7,6 @@ Discord: CarrySheriff#4911
 - Do some requested Stuff 
 - some changes to players look in menu and stuff like that
 - skinviewer upgrade
-- cords
 ##### Requested Stuff:
 - /tracker copy ingame (not gonna do it)
 
