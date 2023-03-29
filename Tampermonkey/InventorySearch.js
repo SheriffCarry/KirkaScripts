@@ -2,8 +2,7 @@
 // @name         InventorySearch
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the world!
-// @author       You
+// @author       CarrySheriff#4911 - github.com/SheriffCarry
 // @match        *://kirka.io/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=kirka.io
 // @grant        none
