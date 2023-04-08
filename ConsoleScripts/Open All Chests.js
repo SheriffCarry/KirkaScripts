@@ -1,8 +1,10 @@
-let chests = [
+let chests = ["077a4cf2-7b76-4624-8be6-4a7316cf5906", //Golden
     "ec230bdb-4b96-42c3-8bd0-65d204a153fc", //Ice
+    "71182187-109c-40c9-94f6-22dbb60d70ee" //Wood
 ]
-let chestskipper = [
-    0 //ice
+let chestskipper = [0, //Golden
+    0, //ice
+    0 //Wood
 ]
 let counter = 0
 let interval = setInterval(async () => {
