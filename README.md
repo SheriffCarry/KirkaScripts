@@ -31,7 +31,7 @@ Discord: CarrySheriff#4911
 - [betterserverbrowser: Filters for serverbrowser](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/Betterserverbrowser.js) (this script isn't best for usage. Best for usage version takes many FPS)
 - [lefthandtoggle: Live swap right hand to left via keybind](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/Lefthandtoggle.js)
 - [profile_checker: lets you check other profiles via the hub](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/Profile_checker.js)
-- [clan_checker: lets you check other profiles via the hub](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/Clan_checker.js)
+- [clan_checker: lets you check other clans via the hub](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/Clan_checker.js)
 - [streaks: see ingame your killstreak](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/Streaks.js)
 - [scorewithouttab: see ingame your score without pressing tab](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/Scorewithouttab.js)
 - [7dayactivity: shows in clan page estimates score in the last 7 days](https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/Userscript/7dayactivity.js)
