@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Clan_checker
+// @name         Streamermode
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @author       CarrySheriff#4911 - github.com/SheriffCarry
