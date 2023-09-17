@@ -2,10 +2,32 @@ let chests = ["077a4cf2-7b76-4624-8be6-4a7316cf5906", //Golden
     "ec230bdb-4b96-42c3-8bd0-65d204a153fc", //Ice
     "71182187-109c-40c9-94f6-22dbb60d70ee" //Wood
 ]
-let chestskipper = [0, //Golden
-    0, //ice
-    0 //Wood
+let chestskipper = [5, //Golden
+    5, //ice
+    5 //Wood
 ]
+let inventory = await fetch("https://api.kirka.io/api/inventory", {
+    "headers": {
+        "accept": "application/json, text/plain, */*",
+        "accept-language": "de",
+        "authorization": "Bearer " + localStorage.token,
+    },
+    "body": null
+})
+inventory = await inventory.json()
+
+inventory.forEach(item => {
+    if (item.item.id == chests[0]) {
+        chestskipper[0] = 0;
+    }
+    if (item.item.id == chests[1]) {
+        chestskipper[1] = 0;
+    }
+    if (item.item.id == chests[2]) {
+        chestskipper[2] = 0;
+    }
+})
+
 let counter = 0
 let interval = setInterval(async () => {
         let r = await fetch("https://api.kirka.io/api/inventory/openChest", {
@@ -22,7 +44,7 @@ let interval = setInterval(async () => {
             "mode": "cors",
             "credentials": "include"
         });
-        
+
         if (r.status == 400) {
             console.log("DON'T WORRY ABOUT THE ERROR")
             console.log("THE CHEST THAT IT TRIED TO OPEN IS NOT AVAILABLE ANYMORE")
@@ -30,7 +52,7 @@ let interval = setInterval(async () => {
         }
         r = await r.json();
         console.log(r.rarity, r.name)
-        
+
         if (!r.rarity) {
             chestskipper[counter]++
         }
