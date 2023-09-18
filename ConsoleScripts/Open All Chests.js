@@ -2,9 +2,9 @@ let chests = ["077a4cf2-7b76-4624-8be6-4a7316cf5906", //Golden
     "ec230bdb-4b96-42c3-8bd0-65d204a153fc", //Ice
     "71182187-109c-40c9-94f6-22dbb60d70ee" //Wood
 ]
-let chestskipper = [4, //Golden
-    4, //ice
-    4 //Wood
+let chestskipper = [5, //Golden
+    5, //ice
+    5 //Wood
 ]
 let coloroutput = {
     MYTHICAL: "c20025",
@@ -84,19 +84,19 @@ let interval = setInterval(async () => {
         if (check1 == chestskipper.length * 5) {
             clearInterval(interval);
         }
-        if (chestskipper[counter] == 5) {
+        if (chestskipper[counter] >= 5) {
             counter++
         }
         if (counter == chests.length) {
             counter = 0
         }
-        if (chestskipper[counter] == 5) {
+        if (chestskipper[counter] >= 5) {
             counter++
         }
         if (counter == chests.length) {
             counter = 0
         }
-        if (chestskipper[counter] == 5) {
+        if (chestskipper[counter] >= 5) {
             counter++
         }
         if (counter == chests.length) {
