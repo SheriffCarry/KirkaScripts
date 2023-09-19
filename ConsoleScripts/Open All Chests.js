@@ -59,12 +59,22 @@ let interval = setInterval(async () => {
             console.log("IT WILL SKIP THAT ONE AFTER 5 FAILS")
         }
         r = await r.json();
-        if (Object.keys(coloroutput).includes(r.rarity)) {
-            let text = r.rarity + " " + r.name;
-            let style = "color: #" + coloroutput[r.rarity]
-            console.log(`%c${text}`, style);
-        } else {
-            console.log(r.rarity + " " + r.name)
+        if (r.rarity != undefined) {
+            if (Object.keys(coloroutput).includes(r.rarity)) {
+                let text = r.rarity + " " + r.name;
+                let style = "color: #" + coloroutput[r.rarity]
+                console.log(`%c${text}`, style);
+                let elem = document.createElement("div")
+                elem.classList = "vue-notification-wrapper"
+                elem.style = "transition-timing-function: ease; transition-delay: 0s; transition-property: all;"
+                elem.innerHTML = '<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text" style="color:#' + coloroutput[r.rarity] + '">' + text + ' </span></div>'
+                document.getElementById("notifications").children[0].appendChild(elem);
+                setTimeout(() => {
+                    elem.remove();
+                }, 5000);
+            } else {
+                console.log(r.rarity + " " + r.name)
+            }
         }
 
         if (!r.rarity) {
@@ -108,6 +118,14 @@ let interval = setInterval(async () => {
         })
         if (check2 == chestskipper.length * 5) {
             clearInterval(interval);
+            let endelem = document.createElement("div")
+            endelem.classList = "vue-notification-wrapper"
+            endelem.style = "transition-timing-function: ease; transition-delay: 0s; transition-property: all;"
+            endelem.innerHTML = '<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text">Finished Running</span></div>'
+            document.getElementById("notifications").children[0].appendChild(endelem);
+            setTimeout(() => {
+                endelem.remove();
+            }, 15000);
         }
     },
     1500)
