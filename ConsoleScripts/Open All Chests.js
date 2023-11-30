@@ -89,11 +89,11 @@ let interval = setInterval(async () => {
           return Math.random() * (max - min) + min;
         }
 
-        var interval = setInterval(function () {
+        var intervalconfetti = setInterval(function () {
           var timeLeft = animationEnd - Date.now();
 
           if (timeLeft <= 0) {
-            return clearInterval(interval);
+            return clearInterval(intervalconfetti);
           }
 
           var particleCount = 50 * (timeLeft / duration);
