@@ -1,174 +1,181 @@
-let chests = [
-  "077a4cf2-7b76-4624-8be6-4a7316cf5906", //Golden
-  "ec230bdb-4b96-42c3-8bd0-65d204a153fc", //Ice
-  "71182187-109c-40c9-94f6-22dbb60d70ee", //Wood
-];
-let chestskipper = [
-  4, //Golden
-  5, //ice
-  5, //Wood
-];
-let coloroutput = {
-  MYTHICAL: "c20025",
-  LEGENDARY: "feaa37",
-  EPIC: "cd2afc",
-  RARE: "43abde",
-  COMMON: "47f2a0",
-  DEFAULT: "ffffff",
-};
-let inventory = await fetch("https://api.kirka.io/api/inventory", {
-  headers: {
-    accept: "application/json, text/plain, */*",
-    "accept-language": "de",
-    authorization: `Bearer ${localStorage.token}`,
-  },
-  body: null,
-});
-inventory = await inventory.json();
-
-inventory.forEach((item) => {
-  if (item.item.id == chests[0]) {
-    chestskipper[0] = 0;
-  }
-  if (item.item.id == chests[1]) {
-    chestskipper[1] = 0;
-  }
-  if (item.item.id == chests[2]) {
-    chestskipper[2] = 0;
-  }
-});
-
-if (!document.getElementById("konfettijs")) {
-  let script = document.createElement("script");
-  script.id = "konfettijs";
-  script.src =
-    "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js";
-  document.head.appendChild(script);
-}
-
-let counter = 0;
-let interval = setInterval(async () => {
-  let r = await fetch("https://api.kirka.io/api/inventory/openChest", {
+(async () => {
+  let chests = [
+    "077a4cf2-7b76-4624-8be6-4a7316cf5906", //Golden
+    "ec230bdb-4b96-42c3-8bd0-65d204a153fc", //Ice
+    "71182187-109c-40c9-94f6-22dbb60d70ee", //Wood
+  ];
+  let chestskipper = [
+    4, //Golden
+    5, //ice
+    5, //Wood
+  ];
+  let coloroutput = {
+    MYTHICAL: "c20025",
+    LEGENDARY: "feaa37",
+    EPIC: "cd2afc",
+    RARE: "43abde",
+    COMMON: "47f2a0",
+    DEFAULT: "ffffff",
+  };
+  let inventory = await fetch("https://api.kirka.io/api/inventory", {
     headers: {
-      accept: "application/json, text/plain, /",
-      authorization: "Bearer " + localStorage.token,
-      "content-type": "application/json;charset=UTF-8",
+      accept: "application/json, text/plain, */*",
+      "accept-language": "de",
+      authorization: `Bearer ${localStorage.token}`,
     },
-    body: `{"id":"${chests[counter]}"}`,
-    method: "POST",
+    body: null,
+  });
+  inventory = await inventory.json();
+
+  inventory.forEach((item) => {
+    if (item.item.id == chests[0]) {
+      chestskipper[0] = 0;
+    }
+    if (item.item.id == chests[1]) {
+      chestskipper[1] = 0;
+    }
+    if (item.item.id == chests[2]) {
+      chestskipper[2] = 0;
+    }
   });
 
-  if (r.status == 400) {
-    console.log("DON'T WORRY ABOUT THE ERROR");
-    console.log("THE CHEST THAT IT TRIED TO OPEN IS NOT AVAILABLE ANYMORE");
-    console.log("IT WILL SKIP THAT ONE AFTER 5 FAILS");
+  if (!document.getElementById("konfettijs")) {
+    let script = document.createElement("script");
+    script.id = "konfettijs";
+    script.src =
+      "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js";
+    document.head.appendChild(script);
   }
-  r = await r.json();
-  if (r.rarity != undefined) {
-    if (Object.keys(coloroutput).includes(r.rarity)) {
-      let text = r.rarity + " " + r.name;
-      let style = "color: #" + coloroutput[r.rarity];
-      console.log(`%c${text}`, style);
-      let elem = document.createElement("div");
-      elem.classList = "vue-notification-wrapper";
-      elem.style =
-        "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
-      elem.innerHTML =
-        '<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text" style="color:#' +
-        coloroutput[r.rarity] +
-        '">' +
-        text +
-        " </span></div>";
-      document.getElementById("notifications").children[0].appendChild(elem);
-      if (r.rarity == "MYTHICAL") {
-        var duration = 15 * 1000;
-        var animationEnd = Date.now() + duration;
-        var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
-        function randomInRange(min, max) {
-          return Math.random() * (max - min) + min;
-        }
+  let counter = 0;
+  let interval = setInterval(async () => {
+    let r = await fetch("https://api.kirka.io/api/inventory/openChest", {
+      headers: {
+        accept: "application/json, text/plain, /",
+        authorization: "Bearer " + localStorage.token,
+        "content-type": "application/json;charset=UTF-8",
+      },
+      body: `{"id":"${chests[counter]}"}`,
+      method: "POST",
+    });
 
-        var intervalconfetti = setInterval(function () {
-          var timeLeft = animationEnd - Date.now();
+    if (r.status == 400) {
+      console.log("DON'T WORRY ABOUT THE ERROR");
+      console.log("THE CHEST THAT IT TRIED TO OPEN IS NOT AVAILABLE ANYMORE");
+      console.log("IT WILL SKIP THAT ONE AFTER 5 FAILS");
+    }
+    r = await r.json();
+    if (r.rarity != undefined) {
+      if (Object.keys(coloroutput).includes(r.rarity)) {
+        let text = r.rarity + " " + r.name;
+        let style = "color: #" + coloroutput[r.rarity];
+        console.log(`%c${text}`, style);
+        let elem = document.createElement("div");
+        elem.classList = "vue-notification-wrapper";
+        elem.style =
+          "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
+        elem.innerHTML =
+          '<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text" style="color:#' +
+          coloroutput[r.rarity] +
+          '">' +
+          text +
+          " </span></div>";
+        document.getElementById("notifications").children[0].appendChild(elem);
+        if (r.rarity == "MYTHICAL") {
+          var duration = 15 * 1000;
+          var animationEnd = Date.now() + duration;
+          var defaults = {
+            startVelocity: 30,
+            spread: 360,
+            ticks: 60,
+            zIndex: 0,
+          };
 
-          if (timeLeft <= 0) {
-            return clearInterval(intervalconfetti);
+          function randomInRange(min, max) {
+            return Math.random() * (max - min) + min;
           }
 
-          var particleCount = 50 * (timeLeft / duration);
-          confetti({
-            ...defaults,
-            particleCount,
-            origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-            zIndex: 99999,
-          });
-          confetti({
-            ...defaults,
-            particleCount,
-            origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-            zIndex: 99999,
-          });
-        }, 250);
-      }
-      setTimeout(() => {
-        elem.remove();
-      }, 5000);
-    } else {
-      console.log(r.rarity + " " + r.name);
-    }
-  }
+          var intervalconfetti = setInterval(function () {
+            var timeLeft = animationEnd - Date.now();
 
-  if (!r.rarity) {
-    chestskipper[counter]++;
-  }
-  counter++;
-  if (counter == chests.length) {
-    counter = 0;
-  }
-  if (counter == chests.length) {
-    counter = 0;
-  }
-  let check1 = 0;
-  chestskipper.forEach((item) => {
-    check1 += item;
-  });
-  if (check1 == chestskipper.length * 5) {
-    clearInterval(interval);
-  }
-  if (chestskipper[counter] >= 5) {
+            if (timeLeft <= 0) {
+              return clearInterval(intervalconfetti);
+            }
+
+            var particleCount = 50 * (timeLeft / duration);
+            confetti({
+              ...defaults,
+              particleCount,
+              origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+              zIndex: 99999,
+            });
+            confetti({
+              ...defaults,
+              particleCount,
+              origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+              zIndex: 99999,
+            });
+          }, 250);
+        }
+        setTimeout(() => {
+          elem.remove();
+        }, 5000);
+      } else {
+        console.log(r.rarity + " " + r.name);
+      }
+    }
+
+    if (!r.rarity) {
+      chestskipper[counter]++;
+    }
     counter++;
-  }
-  if (counter == chests.length) {
-    counter = 0;
-  }
-  if (chestskipper[counter] >= 5) {
-    counter++;
-  }
-  if (counter == chests.length) {
-    counter = 0;
-  }
-  if (chestskipper[counter] >= 5) {
-    counter++;
-  }
-  if (counter == chests.length) {
-    counter = 0;
-  }
-  let check2 = 0;
-  chestskipper.forEach((item) => {
-    check2 += item;
-  });
-  if (check2 == chestskipper.length * 5) {
-    clearInterval(interval);
-    let endelem = document.createElement("div");
-    endelem.classList = "vue-notification-wrapper";
-    endelem.style =
-      "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
-    endelem.innerHTML =
-      '<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text">Finished Running</span></div>';
-    document.getElementById("notifications").children[0].appendChild(endelem);
-    setTimeout(() => {
-      endelem.remove();
-    }, 15000);
-  }
-}, 1500);
+    if (counter == chests.length) {
+      counter = 0;
+    }
+    if (counter == chests.length) {
+      counter = 0;
+    }
+    let check1 = 0;
+    chestskipper.forEach((item) => {
+      check1 += item;
+    });
+    if (check1 == chestskipper.length * 5) {
+      clearInterval(interval);
+    }
+    if (chestskipper[counter] >= 5) {
+      counter++;
+    }
+    if (counter == chests.length) {
+      counter = 0;
+    }
+    if (chestskipper[counter] >= 5) {
+      counter++;
+    }
+    if (counter == chests.length) {
+      counter = 0;
+    }
+    if (chestskipper[counter] >= 5) {
+      counter++;
+    }
+    if (counter == chests.length) {
+      counter = 0;
+    }
+    let check2 = 0;
+    chestskipper.forEach((item) => {
+      check2 += item;
+    });
+    if (check2 == chestskipper.length * 5) {
+      clearInterval(interval);
+      let endelem = document.createElement("div");
+      endelem.classList = "vue-notification-wrapper";
+      endelem.style =
+        "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
+      endelem.innerHTML =
+        '<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text">Finished Running</span></div>';
+      document.getElementById("notifications").children[0].appendChild(endelem);
+      setTimeout(() => {
+        endelem.remove();
+      }, 15000);
+    }
+  }, 1500);
+})();
