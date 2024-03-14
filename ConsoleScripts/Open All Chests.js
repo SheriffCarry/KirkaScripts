@@ -1,41 +1,133 @@
-(async () => {
-  let chests = [
-    "077a4cf2-7b76-4624-8be6-4a7316cf5906", //Golden
-    "ec230bdb-4b96-42c3-8bd0-65d204a153fc", //Ice
-    "71182187-109c-40c9-94f6-22dbb60d70ee", //Wood
-  ];
-  let chestskipper = [
-    4, //Golden
-    5, //ice
-    5, //Wood
-  ];
-  let coloroutput = {
-    MYTHICAL: "c20025",
-    LEGENDARY: "feaa37",
-    EPIC: "cd2afc",
-    RARE: "43abde",
-    COMMON: "47f2a0",
-    DEFAULT: "ffffff",
-  };
-  let inventory = await fetch("https://api.kirka.io/api/inventory", {
+let chests = [
+  { chestid: "077a4cf2-7b76-4624-8be6-4a7316cf5906", name: "Golden" },
+  { chestid: "ec230bdb-4b96-42c3-8bd0-65d204a153fc", name: "Ice" },
+  { chestid: "71182187-109c-40c9-94f6-22dbb60d70ee", name: "Wood" },
+];
+
+let coloroutput = {
+  MYTHICAL: "c20025",
+  LEGENDARY: "feaa37",
+  EPIC: "cd2afc",
+  RARE: "43abde",
+  COMMON: "47f2a0",
+  DEFAULT: "ffffff",
+};
+
+function logCredits() {
+  console.log(
+    "%cMade by carrysheriff/SheriffCarry discord: @carrysheriff",
+    "color: #000000;background-color: #FFFFFF;font-size: large;",
+  );
+  console.log(
+    "If you only want a specific chest to be opened, just delete the chest from the array at the top of the script",
+  );
+  console.log(
+    "https://github.com/SheriffCarry/KirkaScripts/blob/main/ConsoleScripts/Open%20All%20Chests.js make sure to check for code updates",
+  );
+}
+
+async function fetchInventory() {
+  const response = await fetch("https://api.kirka.io/api/inventory", {
     headers: {
-      accept: "application/json, text/plain, */*",
-      "accept-language": "de",
+      accept: "application/json",
       authorization: `Bearer ${localStorage.token}`,
     },
-    body: null,
   });
-  inventory = await inventory.json();
+  return await response.json();
+}
+
+async function openChest(chestId) {
+  const response = await fetch("https://api.kirka.io/api/inventory/openChest", {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      authorization: `Bearer ${localStorage.token}`,
+      "content-type": "application/json;charset=UTF-8",
+    },
+    body: JSON.stringify({ id: chestId }),
+  });
+  if (response.status === 400) {
+    console.log("DON'T WORRY ABOUT THE ERROR");
+    console.log("THE CHEST THAT IT TRIED TO OPEN IS NOT AVAILABLE ANYMORE");
+    console.log("IT WILL SKIP THAT ONE AFTER 5 FAILS");
+  }
+  return await response.json();
+}
+
+function ingameShowcase(message, rarity) {
+  const text = `${rarity} ${message}`;
+  const style = `color: #${coloroutput[rarity] || coloroutput.DEFAULT}`;
+  console.log(`%c${text}`, style);
+
+  const elem = document.createElement("div");
+  elem.classList.add("vue-notification-wrapper");
+  elem.style =
+    "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
+  elem.innerHTML = `<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text" style="color:#${coloroutput[rarity] || coloroutput.DEFAULT}">${text}</span></div>`;
+  elem.onclick = function () {
+    try {
+      elem.remove();
+    } catch {}
+  };
+  document.getElementById("notifications").children[0].appendChild(elem);
+
+  setTimeout(() => {
+    try {
+      elem.remove();
+    } catch {}
+  }, 5000);
+}
+
+function confettiAnimation() {
+  const duration = 15 * 1000;
+  const animationEnd = Date.now() + duration;
+  const defaults = {
+    startVelocity: 30,
+    spread: 360,
+    ticks: 60,
+    zIndex: 0,
+  };
+
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  const intervalconfetti = setInterval(() => {
+    const timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      clearInterval(intervalconfetti);
+      return;
+    }
+
+    const particleCount = 50 * (timeLeft / duration);
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+      zIndex: 99999,
+    });
+    confetti({
+      ...defaults,
+      particleCount,
+      origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+      zIndex: 99999,
+    });
+  }, 250);
+}
+
+let chestskipper = new Array(chests.length).fill(5);
+chestskipper[0] = 4;
+
+(async () => {
+  logCredits();
+  let inventory = await fetchInventory();
 
   inventory.forEach((item) => {
-    if (item.item.id == chests[0]) {
-      chestskipper[0] = 0;
-    }
-    if (item.item.id == chests[1]) {
-      chestskipper[1] = 0;
-    }
-    if (item.item.id == chests[2]) {
-      chestskipper[2] = 0;
+    for (let i = 0; i < chests.length; i++) {
+      if (item.item.id == chests[i]["chestid"]) {
+        chestskipper[i] = 0;
+      }
     }
   });
 
@@ -49,122 +141,22 @@
 
   let counter = 0;
   let interval = setInterval(async () => {
-    let r = await fetch("https://api.kirka.io/api/inventory/openChest", {
-      headers: {
-        accept: "application/json, text/plain, /",
-        authorization: "Bearer " + localStorage.token,
-        "content-type": "application/json;charset=UTF-8",
-      },
-      body: `{"id":"${chests[counter]}"}`,
-      method: "POST",
-    });
-
-    if (r.status == 400) {
-      console.log("DON'T WORRY ABOUT THE ERROR");
-      console.log("THE CHEST THAT IT TRIED TO OPEN IS NOT AVAILABLE ANYMORE");
-      console.log("IT WILL SKIP THAT ONE AFTER 5 FAILS");
-    }
-    r = await r.json();
-    if (r.rarity != undefined) {
-      if (Object.keys(coloroutput).includes(r.rarity)) {
-        let text = r.rarity + " " + r.name;
-        let style = "color: #" + coloroutput[r.rarity];
-        console.log(`%c${text}`, style);
-        let elem = document.createElement("div");
-        elem.classList = "vue-notification-wrapper";
-        elem.style =
-          "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
-        elem.innerHTML =
-          '<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text" style="color:#' +
-          coloroutput[r.rarity] +
-          '">' +
-          text +
-          " </span></div>";
-        document.getElementById("notifications").children[0].appendChild(elem);
-        if (r.rarity == "MYTHICAL") {
-          var duration = 15 * 1000;
-          var animationEnd = Date.now() + duration;
-          var defaults = {
-            startVelocity: 30,
-            spread: 360,
-            ticks: 60,
-            zIndex: 0,
-          };
-
-          function randomInRange(min, max) {
-            return Math.random() * (max - min) + min;
-          }
-
-          var intervalconfetti = setInterval(function () {
-            var timeLeft = animationEnd - Date.now();
-
-            if (timeLeft <= 0) {
-              return clearInterval(intervalconfetti);
-            }
-
-            var particleCount = 50 * (timeLeft / duration);
-            confetti({
-              ...defaults,
-              particleCount,
-              origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
-              zIndex: 99999,
-            });
-            confetti({
-              ...defaults,
-              particleCount,
-              origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
-              zIndex: 99999,
-            });
-          }, 250);
+    let chestresult = await openChest(chests[counter]["chestid"]);
+    if (chestresult["rarity"]) {
+      if (Object.keys(coloroutput).includes(chestresult.rarity)) {
+        ingameShowcase(chestresult["name"], chestresult["rarity"]);
+        if (chestresult["rarity"] == "RARE") {
+          confettiAnimation();
         }
-        setTimeout(() => {
-          elem.remove();
-        }, 5000);
       } else {
-        console.log(r.rarity + " " + r.name);
+        console.log(chestresult["rarity"] + " " + chestresult["name"]);
       }
-    }
-
-    if (!r.rarity) {
+    } else {
       chestskipper[counter]++;
     }
-    counter++;
-    if (counter == chests.length) {
-      counter = 0;
-    }
-    if (counter == chests.length) {
-      counter = 0;
-    }
-    let check1 = 0;
-    chestskipper.forEach((item) => {
-      check1 += item;
-    });
-    if (check1 == chestskipper.length * 5) {
-      clearInterval(interval);
-    }
-    if (chestskipper[counter] >= 5) {
-      counter++;
-    }
-    if (counter == chests.length) {
-      counter = 0;
-    }
-    if (chestskipper[counter] >= 5) {
-      counter++;
-    }
-    if (counter == chests.length) {
-      counter = 0;
-    }
-    if (chestskipper[counter] >= 5) {
-      counter++;
-    }
-    if (counter == chests.length) {
-      counter = 0;
-    }
-    let check2 = 0;
-    chestskipper.forEach((item) => {
-      check2 += item;
-    });
-    if (check2 == chestskipper.length * 5) {
+    counter = (counter + 1) % chests.length;
+    let check = chestskipper.reduce((acc, val) => acc + val, 0);
+    if (check == chestskipper.length * 5) {
       clearInterval(interval);
       let endelem = document.createElement("div");
       endelem.classList = "vue-notification-wrapper";
@@ -172,9 +164,16 @@
         "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
       endelem.innerHTML =
         '<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text">Finished Running</span></div>';
+      endelem.onclick = function () {
+        try {
+          endelem.remove();
+        } catch {}
+      };
       document.getElementById("notifications").children[0].appendChild(endelem);
       setTimeout(() => {
-        endelem.remove();
+        try {
+          endelem.remove();
+        } catch {}
       }, 15000);
     }
   }, 1500);
