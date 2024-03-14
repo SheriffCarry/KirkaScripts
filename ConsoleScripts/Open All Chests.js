@@ -150,7 +150,7 @@ try {
     if (chestresult["rarity"]) {
       if (Object.keys(coloroutput).includes(chestresult.rarity)) {
         ingameShowcase(chestresult["name"], chestresult["rarity"]);
-        if (chestresult["rarity"] == "RARE") {
+        if (chestresult["rarity"] == "MYTHICAL") {
           confettiAnimation();
         }
       } else {
