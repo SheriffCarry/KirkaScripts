@@ -117,10 +117,15 @@ function confettiAnimation() {
 }
 
 let chestskipper = new Array(chests.length).fill(5);
-chestskipper[0] = 4;
+try {
+  chestskipper[0] = 4;
+} catch {}
 
 (async () => {
   logCredits();
+  if (!chests[0]) {
+    return;
+  }
   let inventory = await fetchInventory();
 
   inventory.forEach((item) => {
