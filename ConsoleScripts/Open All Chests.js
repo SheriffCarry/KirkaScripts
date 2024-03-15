@@ -116,6 +116,20 @@ function confettiAnimation() {
   }, 250);
 }
 
+function updateCounter(counter, chestskipper) {
+  counter = (counter + 1) % chests.length;
+  while (chestskipper[counter] >= 5) {
+    counter = (counter + 1) % chests.length;
+
+    let check = chestskipper.reduce((acc, val) => acc + val, 0);
+    if (check == chestskipper.length * 5) {
+      counter = 0;
+      break;
+    }
+  }
+  return counter;
+}
+
 let chestskipper = new Array(chests.length).fill(5);
 try {
   chestskipper[0] = 4;
@@ -159,7 +173,7 @@ try {
     } else {
       chestskipper[counter]++;
     }
-    counter = (counter + 1) % chests.length;
+    counter = updateCounter(counter, chestskipper);
     let check = chestskipper.reduce((acc, val) => acc + val, 0);
     if (check == chestskipper.length * 5) {
       clearInterval(interval);
