@@ -65,8 +65,8 @@ async function openCard(cardid) {
   return returnobj;
 }
 
-function ingameShowcase(message, rarity) {
-  const text = `${rarity} ${message}`;
+function ingameShowcase(message, rarity, name) {
+  const text = `${rarity} ${message} from a ${name}`;
   const style = `color: #${coloroutput[rarity] || coloroutput.DEFAULT}`;
   console.log(`%c${text}`, style);
 
@@ -174,7 +174,11 @@ try {
     let cardresult = await openCard(cards[counter]["cardid"]);
     if (cardresult["rarity"]) {
       if (Object.keys(coloroutput).includes(cardresult["rarity"])) {
-        ingameShowcase(cardresult["name"], cardresult["rarity"]);
+        ingameShowcase(
+          cardresult["name"],
+          cardresult["rarity"],
+          cards[counter]["name"],
+        );
         if (cardresult["rarity"] == "MYTHICAL") {
           confettiAnimation();
         }
