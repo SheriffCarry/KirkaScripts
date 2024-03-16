@@ -66,7 +66,7 @@ async function openCard(cardid) {
 }
 
 function ingameShowcase(message, rarity, name) {
-  const text = `${rarity} ${message} from a ${name}`;
+  const text = `${rarity} ${message} from: ${name}`;
   const style = `color: #${coloroutput[rarity] || coloroutput.DEFAULT}`;
   console.log(`%c${text}`, style);
 
