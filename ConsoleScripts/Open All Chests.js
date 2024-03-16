@@ -54,8 +54,8 @@ async function openChest(chestId) {
   return await response.json();
 }
 
-function ingameShowcase(message, rarity) {
-  const text = `${rarity} ${message}`;
+function ingameShowcase(message, rarity, name) {
+  const text = `${rarity} ${message} from a ${name}`;
   const style = `color: #${coloroutput[rarity] || coloroutput.DEFAULT}`;
   console.log(`%c${text}`, style);
 
@@ -163,7 +163,11 @@ try {
     let chestresult = await openChest(chests[counter]["chestid"]);
     if (chestresult["rarity"]) {
       if (Object.keys(coloroutput).includes(chestresult.rarity)) {
-        ingameShowcase(chestresult["name"], chestresult["rarity"]);
+        ingameShowcase(
+          chestresult["name"],
+          chestresult["rarity"],
+          chests[counter]["name"],
+        );
         if (chestresult["rarity"] == "MYTHICAL") {
           confettiAnimation();
         }
