@@ -1,3 +1,4 @@
+//Delete the row of the cards, you don't want to get opened
 let cards = [
   { cardid: "723c4ba7-57b3-4ae4-b65e-75686fa77bf2", name: "Cold" },
   { cardid: "723c4ba7-57b3-4ae4-b65e-75686fa77bf1", name: "Girls band" },
