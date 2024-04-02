@@ -1,3 +1,4 @@
+//Delete the row of the chest, you don't want to get opened
 let chests = [
   { chestid: "077a4cf2-7b76-4624-8be6-4a7316cf5906", name: "Golden" },
   { chestid: "ec230bdb-4b96-42c3-8bd0-65d204a153fc", name: "Ice" },
