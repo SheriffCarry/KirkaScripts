@@ -1,5 +1,5 @@
 //Chest Open delay
-let openingdelay = 1500; //1500 = 1.5s, make it higher to be more safe. (Recently some people have experienced issues with opening chests... Higher delay could fix it)
+let openingdelay = 2000; //2000 = 2.0s, make it higher to be more safe. (Recently some people have experienced issues with opening chests... Higher delay could fix it)
 //Delete the row of the chest, you don't want to get opened
 let chests = [
   { chestid: "077a4cf2-7b76-4624-8be6-4a7316cf5906", name: "Golden" },
