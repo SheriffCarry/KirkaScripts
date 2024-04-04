@@ -1,5 +1,5 @@
 //Card Open delay
-let openingdelay = 1500; //1500 = 1.5s, make it higher to be more safe. (Recently some people have experienced issues with opening cards... Higher delay could fix it)
+let openingdelay = 2000; //2000 = 2.0s, make it higher to be more safe. (Recently some people have experienced issues with opening cards... Higher delay could fix it)
 //Delete the row of the cards, you don't want to get opened
 let cards = [
   { cardid: "723c4ba7-57b3-4ae4-b65e-75686fa77bf2", name: "Cold" },
