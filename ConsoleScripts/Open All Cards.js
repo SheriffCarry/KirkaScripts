@@ -246,7 +246,9 @@ try {
           endelem.remove();
         } catch {}
       };
-      document.getElementById("notifications").children[0].appendChild(endelem);
+      document
+        .getElementById(translations["notifications"])
+        .children[0].appendChild(endelem);
       setTimeout(() => {
         try {
           endelem.remove();
