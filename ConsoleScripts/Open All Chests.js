@@ -36,9 +36,11 @@ let translations = {
   wMmWwnNW: "COMMON",
   inventory: "wWWNn",
   openChest: "wWWNwmMn",
+  openCharacterCard: "wWmWwNn",
   id: "wNwMWmn",
   item: "wnMWwNW",
   notifications: "wmwn",
+  isWon: "wMwnWW",
 };
 
 function logCredits() {
