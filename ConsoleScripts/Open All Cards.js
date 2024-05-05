@@ -6,6 +6,7 @@ let cards = [
   { cardid: "723c4ba7-57b3-4ae4-b65e-75686fa77bf1", name: "Girls band" },
   { cardid: "6281ed5a-663a-45e1-9772-962c95aa4605", name: "Party" },
   { cardid: "9cc5bd60-806f-4818-a7d4-1ba9b32bd96c", name: "Soldiers" },
+  { cardid: "a5002827-97d1-4eb4-b893-af4047e0c77f", name: "Periodic" },
 ];
 
 let coloroutput = {
@@ -15,6 +16,24 @@ let coloroutput = {
   RARE: "43abde",
   COMMON: "47f2a0",
   DEFAULT: "ffffff",
+};
+
+let translations = {
+  name: "wnMWwWm",
+  rarity: "wMWwmWNn",
+  wmWWNMwn: "MYTHICAL",
+  MYTHICAL: "wmWWNMwn",
+  wWWNmnM: "LEGENDARY",
+  wnMWwN: "EPIC",
+  wnMWwWmN: "RARE",
+  wMmWwnNW: "COMMON",
+  inventory: "wWWNn",
+  openChest: "wWWNwmMn",
+  openCharacterCard: "wWmWwNn",
+  id: "wNwMWmn",
+  item: "wnMWwNW",
+  notifications: "wmwn",
+  isWon: "wMwnWW",
 };
 
 function logCredits() {
@@ -31,18 +50,23 @@ function logCredits() {
 }
 
 async function fetchInventory() {
-  const response = await fetch("https://api.kirka.io/api/inventory", {
-    headers: {
-      accept: "application/json",
-      authorization: `Bearer ${localStorage.token}`,
+  const response = await fetch(
+    `https://api2.kirka.io/api/${translations["inventory"]}`,
+    {
+      headers: {
+        accept: "application/json",
+        authorization: `Bearer ${localStorage.token}`,
+      },
     },
-  });
+  );
   return await response.json();
 }
 
 async function openCard(cardid) {
+  let bodyobj = {};
+  bodyobj[translations["id"]] = cardid;
   const response = await fetch(
-    "https://api.kirka.io/api/inventory/openCharacterCard",
+    `https://api2.kirka.io/api/${translations["inventory"]}/${translations["openCharacterCard"]}`,
     {
       method: "POST",
       headers: {
@@ -50,7 +74,7 @@ async function openCard(cardid) {
         authorization: `Bearer ${localStorage.token}`,
         "content-type": "application/json;charset=UTF-8",
       },
-      body: JSON.stringify({ id: cardid }),
+      body: JSON.stringify(bodyobj),
     },
   );
   if (response.status === 400) {
@@ -61,7 +85,7 @@ async function openCard(cardid) {
   let json = await response.json();
   let returnobj = {};
   Array.from(json).forEach((item) => {
-    if (item["isWon"] && item["isWon"] == true) {
+    if (item[translations["isWon"]] && item[translations["isWon"]] == true) {
       returnobj = item;
     }
   });
@@ -69,6 +93,7 @@ async function openCard(cardid) {
 }
 
 function ingameShowcase(message, rarity, name) {
+  rarity = translations[rarity];
   const text = `${rarity} ${message} from: ${name}`;
   const style = `color: #${coloroutput[rarity] || coloroutput.DEFAULT}`;
   console.log(`%c${text}`, style);
@@ -77,13 +102,15 @@ function ingameShowcase(message, rarity, name) {
   elem.classList.add("vue-notification-wrapper");
   elem.style =
     "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
-  elem.innerHTML = `<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text" style="color:#${coloroutput[rarity] || coloroutput.DEFAULT}">${text}</span></div>`;
+  elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text" style="color:#${coloroutput[rarity] || coloroutput.DEFAULT}">${text}</span></div>`;
   elem.onclick = function () {
     try {
       elem.remove();
     } catch {}
   };
-  document.getElementById("notifications").children[0].appendChild(elem);
+  document
+    .getElementById(translations["notifications"])
+    .children[0].appendChild(elem);
 
   setTimeout(() => {
     try {
@@ -158,7 +185,9 @@ try {
 
   inventory.forEach((item) => {
     for (let i = 0; i < cards.length; i++) {
-      if (item.item.id == cards[i]["cardid"]) {
+      if (
+        item[translations["item"]][translations["id"]] == cards[i]["cardid"]
+      ) {
         cardskipper[i] = 0;
       }
     }
@@ -175,18 +204,29 @@ try {
   let counter = 0;
   let interval = setInterval(async () => {
     let cardresult = await openCard(cards[counter]["cardid"]);
-    if (cardresult["rarity"]) {
-      if (Object.keys(coloroutput).includes(cardresult["rarity"])) {
+    if (cardresult[translations["rarity"]]) {
+      if (
+        Object.keys(coloroutput).includes(
+          translations[cardresult[translations["rarity"]]],
+        )
+      ) {
         ingameShowcase(
-          cardresult["name"],
-          cardresult["rarity"],
+          cardresult[translations["name"]],
+          cardresult[translations["rarity"]],
           cards[counter]["name"],
         );
-        if (cardresult["rarity"] == "MYTHICAL") {
+        if (
+          translations[cardresult[translations["rarity"]]] ==
+          translations["MYTHICAL"]
+        ) {
           confettiAnimation();
         }
       } else {
-        console.log(cardresult["rarity"] + " " + cardresult["name"]);
+        console.log(
+          cardresult[translations["rarity"]] +
+            " " +
+            cardresult[translations["name"]],
+        );
       }
     } else {
       cardskipper[counter]++;
@@ -200,7 +240,7 @@ try {
       endelem.style =
         "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
       endelem.innerHTML =
-        '<div data-v-2667dbc5="" data-v-2e3e77fa="" class="alert-default"><span data-v-2667dbc5="" class="text">Finished Running</span></div>';
+        '<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text">Finished Running</span></div>';
       endelem.onclick = function () {
         try {
           endelem.remove();
