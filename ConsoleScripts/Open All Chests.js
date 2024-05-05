@@ -219,7 +219,10 @@ try {
           chestresult[translations["rarity"]],
           chests[counter]["name"],
         );
-        if (chestresult[translations["rarity"]] == translations["MYTHICAL"]) {
+        if (
+          translations[chestresult[translations["rarity"]]] ==
+          translations["MYTHICAL"]
+        ) {
           confettiAnimation();
         }
       } else {
