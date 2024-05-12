@@ -25,7 +25,7 @@ let translations = {
   MYTHICAL: "wmWWNMwn", //fixed
   wWWNmnM: "LEGENDARY", //fixed
   wnMWwWm: "EPIC", //fixxed
-  wnMWwWm: "RARE", //fixxed
+  wnMWwWNm: "RARE", //fixxed
   wMmWwnNW: "COMMON", //fixxed
   inventory: "wWWNn", //fixed
   openChest: "wWWNwmMn", //fixed
