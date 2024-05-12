@@ -19,21 +19,21 @@ let coloroutput = {
 };
 
 let translations = {
-  name: "wnMWwWm",
-  rarity: "wMWwmWNn",
-  wmWWNMwn: "MYTHICAL",
-  MYTHICAL: "wmWWNMwn",
-  wWWNmnM: "LEGENDARY",
-  wnMWwN: "EPIC",
-  wnMWwWmN: "RARE",
-  wMmWwnNW: "COMMON",
-  inventory: "wWWNn",
-  openChest: "wWWNwmMn",
-  openCharacterCard: "wWmWwNn",
-  id: "wNwMWmn",
-  item: "wnMWwNW",
-  notifications: "wmwn",
-  isWon: "wMwnWW",
+  name: "wnMWwWN", //fixed
+  rarity: "wMWwmWN", //fixed
+  wmWWNMwn: "MYTHICAL", //fixed
+  MYTHICAL: "wmWWNMwn", //fixed
+  wWWNmnM: "LEGENDARY", //fixed
+  wnMWwWm: "EPIC", //fixxed
+  wnMWwWm: "RARE", //fixxed
+  wMmWwnNW: "COMMON", //fixxed
+  inventory: "wWWNn", //fixed
+  openChest: "wWWNwmMn", //fixed
+  openCharacterCard: "wWmWwNn", //fixed
+  id: "wNwMWmn", //fixed
+  item: "wnMWwWmN", //fixed
+  notifications: "wmwNWMnW", //fixed
+  isWon: "wMwnW", //fixed
 };
 
 function logCredits() {
