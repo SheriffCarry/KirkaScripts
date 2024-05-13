@@ -19,21 +19,21 @@ let coloroutput = {
 };
 
 let translations = {
-  name: "wnMWwWN", //fixed
-  rarity: "wMWwmWN", //fixed
-  wmWWNMwn: "MYTHICAL", //fixed
-  MYTHICAL: "wmWWNMwn", //fixed
-  wWWNmnM: "LEGENDARY", //fixed
-  wnMWwWm: "EPIC", //fixxed
-  wnMWwWNm: "RARE", //fixxed
-  wMmWwnNW: "COMMON", //fixxed
-  inventory: "wWWNn", //fixed
-  openChest: "wWWNwmMn", //fixed
-  openCharacterCard: "wWmWwNn", //fixed
-  id: "wNwMWmn", //fixed
-  item: "wnMWwWmN", //fixed
-  notifications: "wmwNWMnW", //fixed
-  isWon: "wMwnW", //fixed
+  name: "wnMWwWN",
+  rarity: "wMWwmWN",
+  wmWWNMwn: "MYTHICAL",
+  MYTHICAL: "wmWWNMwn",
+  wWWNmnM: "LEGENDARY",
+  wnMWwWm: "EPIC",
+  wnMWwWNm: "RARE",
+  wMmWwnNW: "COMMON",
+  inventory: "wWWNn",
+  openChest: "wWWNwmMn",
+  openCharacterCard: "wWmWwNn",
+  id: "wNwMWmn",
+  item: "wnMWwWmN",
+  notifications: "wmwNWMnW",
+  isWon: "wMwnW",
 };
 
 function logCredits() {
@@ -109,7 +109,7 @@ function ingameShowcase(message, rarity, name) {
     } catch {}
   };
   document
-    .getElementById(translations["notifications"])
+    .getElementsByClassName("vue-notification-group")[0]
     .children[0].appendChild(elem);
 
   setTimeout(() => {
@@ -247,7 +247,7 @@ try {
         } catch {}
       };
       document
-        .getElementById(translations["notifications"])
+        .getElementsByClassName("vue-notification-group")[0]
         .children[0].appendChild(endelem);
       setTimeout(() => {
         try {
