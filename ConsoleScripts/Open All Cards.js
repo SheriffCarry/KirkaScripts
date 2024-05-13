@@ -191,7 +191,7 @@ try {
   }
   let inventory = await fetchInventory();
 
-  let cardskipper = await processCardskipper(cardskipper, inventory);
+  cardskipper = await processCardskipper(cardskipper, inventory);
 
   if (!document.getElementById("konfettijs")) {
     let script = document.createElement("script");
