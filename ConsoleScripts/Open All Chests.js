@@ -26,21 +26,21 @@ let coloroutput = {
 };
 
 let translations = {
-  name: "wnMWwWN", //fixed
-  rarity: "wMWwmWN", //fixed
-  wmWWNMwn: "MYTHICAL", //fixed
-  MYTHICAL: "wmWWNMwn", //fixed
-  wWWNmnM: "LEGENDARY", //fixed
-  wnMWwWm: "EPIC", //fixxed
-  wnMWwWNm: "RARE", //fixxed
-  wMmWwnNW: "COMMON", //fixxed
-  inventory: "wWWNn", //fixed
-  openChest: "wWWNwmMn", //fixed
-  openCharacterCard: "wWmWwNn", //fixed
-  id: "wNwMWmn", //fixed
-  item: "wnMWwWmN", //fixed
-  notifications: "wmwNWMnW", //fixed
-  isWon: "wMwnW", //fixed
+  name: "wnMWwWN",
+  rarity: "wMWwmWN",
+  wmWWNMwn: "MYTHICAL",
+  MYTHICAL: "wmWWNMwn",
+  wWWNmnM: "LEGENDARY",
+  wnMWwWm: "EPIC",
+  wnMWwWNm: "RARE",
+  wMmWwnNW: "COMMON",
+  inventory: "wWWNn",
+  openChest: "wWWNwmMn",
+  openCharacterCard: "wWmWwNn",
+  id: "wNwMWmn",
+  item: "wnMWwWmN",
+  notifications: "wmwNWMnW",
+  isWon: "wMwnW",
 };
 
 function logCredits() {
@@ -84,11 +84,6 @@ async function openChest(chestId) {
       body: JSON.stringify(bodyobj),
     },
   );
-  if (response.status === 400) {
-    console.log("DON'T WORRY ABOUT THE ERROR");
-    console.log("THE CHEST THAT IT TRIED TO OPEN IS NOT AVAILABLE ANYMORE");
-    console.log("IT WILL SKIP THAT ONE AFTER 5 FAILS");
-  }
   return await response.json();
 }
 
@@ -109,7 +104,7 @@ function ingameShowcase(message, rarity, name) {
     } catch {}
   };
   document
-    .getElementById(translations["notifications"])
+    .getElementsByClassName("vue-notification-group")[0]
     .children[0].appendChild(elem);
 
   setTimeout(() => {
@@ -165,11 +160,11 @@ function confettiAnimation() {
 
 function updateCounter(counter, chestskipper) {
   counter = (counter + 1) % chests.length;
-  while (chestskipper[counter] >= 5) {
+  while (chestskipper[counter] >= 2) {
     counter = (counter + 1) % chests.length;
 
     let check = chestskipper.reduce((acc, val) => acc + val, 0);
-    if (check == chestskipper.length * 5) {
+    if (check == chestskipper.length * 2) {
       counter = 0;
       break;
     }
@@ -177,9 +172,9 @@ function updateCounter(counter, chestskipper) {
   return counter;
 }
 
-let chestskipper = new Array(chests.length).fill(5);
+let chestskipper = new Array(chests.length).fill(2);
 try {
-  chestskipper[0] = 4;
+  chestskipper[0] = 1;
 } catch {}
 
 (async () => {
@@ -234,12 +229,16 @@ try {
             chestresult[translations["name"]],
         );
       }
+    } else if (chestresult["code"] == 9910) {
     } else {
       chestskipper[counter]++;
+      console.log("DON'T WORRY ABOUT THE ERROR");
+      console.log("THE CHEST THAT IT TRIED TO OPEN IS NOT AVAILABLE ANYMORE");
+      console.log("IT WILL SKIP THAT ONE AFTER 2 FAILS");
     }
     counter = updateCounter(counter, chestskipper);
     let check = chestskipper.reduce((acc, val) => acc + val, 0);
-    if (check == chestskipper.length * 5) {
+    if (check == chestskipper.length * 2) {
       clearInterval(interval);
       let endelem = document.createElement("div");
       endelem.classList = "vue-notification-wrapper";
@@ -253,7 +252,7 @@ try {
         } catch {}
       };
       document
-        .getElementById(translations["notifications"])
+        .getElementsByClassName("vue-notification-group")[0]
         .children[0].appendChild(endelem);
       setTimeout(() => {
         try {
