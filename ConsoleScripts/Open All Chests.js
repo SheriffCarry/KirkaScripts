@@ -172,18 +172,7 @@ function updateCounter(counter, chestskipper) {
   return counter;
 }
 
-let chestskipper = new Array(chests.length).fill(2);
-try {
-  chestskipper[0] = 1;
-} catch {}
-
-(async () => {
-  logCredits();
-  if (!chests[0]) {
-    return;
-  }
-  let inventory = await fetchInventory();
-
+async function processChestskipper(chestskipper, inventory) {
   inventory.forEach((item) => {
     for (let i = 0; i < chests.length; i++) {
       if (
@@ -193,6 +182,22 @@ try {
       }
     }
   });
+  return chestskipper;
+}
+
+let chestskipper = new Array(chests.length).fill(2);
+try {
+  chestskipper[0] = 0;
+} catch {}
+
+(async () => {
+  logCredits();
+  if (!chests[0]) {
+    return;
+  }
+  let inventory = await fetchInventory();
+
+  chestskipper = processChestskipper(chestskipper, inventory);
 
   if (!document.getElementById("konfettijs")) {
     let script = document.createElement("script");
