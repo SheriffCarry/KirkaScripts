@@ -77,11 +77,6 @@ async function openCard(cardid) {
       body: JSON.stringify(bodyobj),
     },
   );
-  if (response.status === 400) {
-    console.log("DON'T WORRY ABOUT THE ERROR");
-    console.log("THE CHEST THAT IT TRIED TO OPEN IS NOT AVAILABLE ANYMORE");
-    console.log("IT WILL SKIP THAT ONE AFTER 5 FAILS");
-  }
   let json = await response.json();
   let returnobj = {};
   Array.from(json).forEach((item) => {
@@ -159,11 +154,11 @@ function confettiAnimation() {
 
 function updateCounter(counter, cardskipper) {
   counter = (counter + 1) % cards.length;
-  while (cardskipper[counter] >= 5) {
+  while (cardskipper[counter] >= 2) {
     counter = (counter + 1) % cards.length;
 
     let check = cardskipper.reduce((acc, val) => acc + val, 0);
-    if (check == cardskipper.length * 5) {
+    if (check == cardskipper.length * 2) {
       counter = 0;
       break;
     }
@@ -171,18 +166,7 @@ function updateCounter(counter, cardskipper) {
   return counter;
 }
 
-let cardskipper = new Array(cards.length).fill(5);
-try {
-  cardskipper[0] = 4;
-} catch {}
-
-(async () => {
-  logCredits();
-  if (!cards[0]) {
-    return;
-  }
-  let inventory = await fetchInventory();
-
+async function processCardskipper(cardskipper, inventory) {
   inventory.forEach((item) => {
     for (let i = 0; i < cards.length; i++) {
       if (
@@ -192,6 +176,22 @@ try {
       }
     }
   });
+  return cardskipper;
+}
+
+let cardskipper = new Array(cards.length).fill(2);
+try {
+  cardskipper[0] = 0;
+} catch {}
+
+(async () => {
+  logCredits();
+  if (!cards[0]) {
+    return;
+  }
+  let inventory = await fetchInventory();
+
+  let cardskipper = await processCardskipper(cardskipper, inventory);
 
   if (!document.getElementById("konfettijs")) {
     let script = document.createElement("script");
@@ -228,12 +228,16 @@ try {
             cardresult[translations["name"]],
         );
       }
+    } else if (cardresult["code"] == 9910) {
+      console.log("DON'T WORRY ABOUT THE ERROR");
+      console.log("THE CHEST THAT IT TRIED TO OPEN IS NOT AVAILABLE ANYMORE");
+      console.log("IT WILL SKIP THAT ONE AFTER 2 FAILS");
     } else {
       cardskipper[counter]++;
     }
     counter = updateCounter(counter, cardskipper);
     let check = cardskipper.reduce((acc, val) => acc + val, 0);
-    if (check == cardskipper.length * 5) {
+    if (check == cardskipper.length * 2) {
       clearInterval(interval);
       let endelem = document.createElement("div");
       endelem.classList = "vue-notification-wrapper";
