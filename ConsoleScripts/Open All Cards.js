@@ -20,7 +20,7 @@ let coloroutput = {
 
 let translations = {
   name: "wnMWwWN",
-  rarity: "wMWwmWN",
+  rarity: "wMWwW",
   wmWWNMwn: "MYTHICAL",
   MYTHICAL: "wmWWNMwn",
   wWWNmnM: "LEGENDARY",
@@ -166,7 +166,7 @@ function updateCounter(counter, cardskipper) {
   return counter;
 }
 
-async function processCardskipper(cardskipper, inventory) {
+function processCardskipper(cardskipper, inventory) {
   inventory.forEach((item) => {
     for (let i = 0; i < cards.length; i++) {
       if (
@@ -191,7 +191,7 @@ try {
   }
   let inventory = await fetchInventory();
 
-  cardskipper = await processCardskipper(cardskipper, inventory);
+  cardskipper = processCardskipper(cardskipper, inventory);
 
   if (!document.getElementById("konfettijs")) {
     let script = document.createElement("script");
@@ -229,11 +229,12 @@ try {
         );
       }
     } else if (cardresult["code"] == 9910) {
+      console.log("RATELIMIT");
+    } else {
+      cardskipper[counter]++;
       console.log("DON'T WORRY ABOUT THE ERROR");
       console.log("THE CHEST THAT IT TRIED TO OPEN IS NOT AVAILABLE ANYMORE");
       console.log("IT WILL SKIP THAT ONE AFTER 2 FAILS");
-    } else {
-      cardskipper[counter]++;
     }
     counter = updateCounter(counter, cardskipper);
     let check = cardskipper.reduce((acc, val) => acc + val, 0);
