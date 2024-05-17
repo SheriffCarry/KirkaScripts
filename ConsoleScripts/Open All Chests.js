@@ -27,7 +27,7 @@ let coloroutput = {
 
 let translations = {
   name: "wnMWwWN",
-  rarity: "wMWwmWN",
+  rarity: "wMWwW",
   wmWWNMwn: "MYTHICAL",
   MYTHICAL: "wmWWNMwn",
   wWWNmnM: "LEGENDARY",
@@ -172,7 +172,7 @@ function updateCounter(counter, chestskipper) {
   return counter;
 }
 
-async function processChestskipper(chestskipper, inventory) {
+function processChestskipper(chestskipper, inventory) {
   inventory.forEach((item) => {
     for (let i = 0; i < chests.length; i++) {
       if (
@@ -235,6 +235,7 @@ try {
         );
       }
     } else if (chestresult["code"] == 9910) {
+      console.log("RATELIMIT");
     } else {
       chestskipper[counter]++;
       console.log("DON'T WORRY ABOUT THE ERROR");
