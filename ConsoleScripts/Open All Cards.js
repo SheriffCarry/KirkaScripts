@@ -29,7 +29,7 @@ let translations = {
   wMmWwnNW: "COMMON",
   inventory: "wWWNn",
   openChest: "wWWNwmMn",
-  openCharacterCard: "wWmWwNn",
+  openCharacterCard: "wWmWwN",
   id: "wNwMWmn",
   item: "wnMWwWmN",
   notifications: "wmwNWMnW",
