@@ -23,7 +23,7 @@ let translations = {
   rarity: "wMWwW",
   wmWWNMwn: "MYTHICAL",
   MYTHICAL: "wmWWNMwn",
-  wWWNmnM: "LEGENDARY",
+  wWWNMnw: "LEGENDARY",
   wnMWwWm: "EPIC",
   wnMWwWNm: "RARE",
   wMmWwnNW: "COMMON",
