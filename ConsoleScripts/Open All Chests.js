@@ -28,12 +28,11 @@ let coloroutput = {
 let translations = {
   name: "wnMWwWN",
   rarity: "wMWwW",
-  wmWWNMwn: "MYTHICAL",
   MYTHICAL: "wmWWNMwn",
-  wWWNMnw: "LEGENDARY",
-  wnMWwWm: "EPIC",
-  wnMWwWNm: "RARE",
-  wMmWwnNW: "COMMON",
+  LEGENDARY: "wWWNMnw",
+  EPIC: "wnMWwWm",
+  RARE: "wnMWwWNm",
+  COMMON: "wMmWwnNW",
   inventory: "wWWNn",
   openChest: "wWWNwmMn",
   openCharacterCard: "wWmWwN",
@@ -43,6 +42,25 @@ let translations = {
   isWon: "wMwnW",
 };
 
+//This Part reverses my translations
+Object.keys(translations).forEach((item) => {
+  let translationItem = translations[item];
+  if (item == "MYTHICAL") {
+    translations[translationItem] = item;
+  } else if (item == "MYTHICAL") {
+    translations[translationItem] = item;
+  } else if (item == "LEGENDARY") {
+    translations[translationItem] = item;
+  } else if (item == "EPIC") {
+    translations[translationItem] = item;
+  } else if (item == "RARE") {
+    translations[translationItem] = item;
+  } else if (item == "COMMON") {
+    translations[translationItem] = item;
+  }
+});
+
+//This code logs credits
 function logCredits() {
   console.log(
     "%cMade by carrysheriff/SheriffCarry discord: @carrysheriff",
@@ -52,10 +70,11 @@ function logCredits() {
     "If you only want a specific chest to be opened, just delete the chest from the array at the top of the script",
   );
   console.log(
-    "https://github.com/SheriffCarry/KirkaScripts/blob/main/ConsoleScripts/Open%20All%20Chests.js make sure to check for code updates",
+    "https://github.com/SheriffCarry/KirkaScripts/blob/main/ConsoleScripts/OpenAllChests_live_updating.js this code is live updating",
   );
 }
 
+//This code fetches and returns the inventory
 async function fetchInventory() {
   const response = await fetch(
     `https://api2.kirka.io/api/${translations["inventory"]}`,
@@ -69,6 +88,7 @@ async function fetchInventory() {
   return await response.json();
 }
 
+//this code opens chests
 async function openChest(chestId) {
   let bodyobj = {};
   bodyobj[translations["id"]] = chestId;
@@ -87,6 +107,7 @@ async function openChest(chestId) {
   return await response.json();
 }
 
+//This code displays the result of the container ingame + in the console
 function ingameShowcase(message, rarity, name) {
   rarity = translations[rarity];
   const text = `${rarity} ${message} from: ${name}`;
@@ -114,6 +135,7 @@ function ingameShowcase(message, rarity, name) {
   }, 5000);
 }
 
+//This code is for an animation for a specific rarity
 function confettiAnimation() {
   const duration = 15 * 1000;
   const animationEnd = Date.now() + duration;
@@ -158,6 +180,7 @@ function confettiAnimation() {
   }, 250);
 }
 
+//This one handles updatign the counter variable
 function updateCounter(counter, chestskipper) {
   counter = (counter + 1) % chests.length;
   while (chestskipper[counter] >= 2) {
@@ -172,6 +195,7 @@ function updateCounter(counter, chestskipper) {
   return counter;
 }
 
+//This processes my chestskipper variable
 function processChestskipper(chestskipper, inventory) {
   inventory.forEach((item) => {
     for (let i = 0; i < chests.length; i++) {
@@ -203,36 +227,23 @@ try {
     let script = document.createElement("script");
     script.id = "konfettijs";
     script.src =
-      "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js";
+      "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js";
     document.head.appendChild(script);
   }
 
   let counter = 0;
   let interval = setInterval(async () => {
     let chestresult = await openChest(chests[counter]["chestid"]);
-    if (chestresult[translations["rarity"]]) {
-      if (
-        Object.keys(coloroutput).includes(
-          translations[chestresult[translations["rarity"]]],
-        )
-      ) {
-        ingameShowcase(
-          chestresult[translations["name"]],
-          chestresult[translations["rarity"]],
-          chests[counter]["name"],
-        );
-        if (
-          translations[chestresult[translations["rarity"]]] ==
-          translations["MYTHICAL"]
-        ) {
+    let resultRarity = chestresult[translations["rarity"]];
+    let resultName = chestresult[translations["name"]];
+    if (resultRarity) {
+      if (Object.keys(coloroutput).includes(translations[resultRarity])) {
+        ingameShowcase(resultName, resultRarity, chests[counter]["name"]);
+        if (translations[resultRarity] == "MYTHICAL") {
           confettiAnimation();
         }
       } else {
-        console.log(
-          chestresult[translations["rarity"]] +
-            " " +
-            chestresult[translations["name"]],
-        );
+        console.log(`${resultRarity} ${resultName}`);
       }
     } else if (chestresult["code"] == 9910) {
       console.log("RATELIMIT");
