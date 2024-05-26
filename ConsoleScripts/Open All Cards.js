@@ -21,12 +21,11 @@ let coloroutput = {
 let translations = {
   name: "wnMWwWN",
   rarity: "wMWwW",
-  wmWWNMwn: "MYTHICAL",
   MYTHICAL: "wmWWNMwn",
-  wWWNMnw: "LEGENDARY",
-  wnMWwWm: "EPIC",
-  wnMWwWNm: "RARE",
-  wMmWwnNW: "COMMON",
+  LEGENDARY: "wWWNMnw",
+  EPIC: "wnMWwWm",
+  RARE: "wnMWwWNm",
+  COMMON: "wMmWwnNW",
   inventory: "wWWNn",
   openChest: "wWWNwmMn",
   openCharacterCard: "wWmWwN",
@@ -36,6 +35,25 @@ let translations = {
   isWon: "wMwnW",
 };
 
+//This Part reverses my translations
+Object.keys(translations).forEach((item) => {
+  let translationItem = translations[item];
+  if (item == "MYTHICAL") {
+    translations[translationItem] = item;
+  } else if (item == "MYTHICAL") {
+    translations[translationItem] = item;
+  } else if (item == "LEGENDARY") {
+    translations[translationItem] = item;
+  } else if (item == "EPIC") {
+    translations[translationItem] = item;
+  } else if (item == "RARE") {
+    translations[translationItem] = item;
+  } else if (item == "COMMON") {
+    translations[translationItem] = item;
+  }
+});
+
+//This code logs credits
 function logCredits() {
   console.log(
     "%cMade by carrysheriff/SheriffCarry discord: @carrysheriff",
@@ -45,10 +63,11 @@ function logCredits() {
     "If you only want a specific chest to be opened, just delete the chest from the array at the top of the script",
   );
   console.log(
-    "https://github.com/SheriffCarry/KirkaScripts/blob/main/ConsoleScripts/Open%20All%20Cards.js make sure to check for code updates",
+    "https://github.com/SheriffCarry/KirkaScripts/blob/main/ConsoleScripts/OpenAllCards_live_updating.js this code is live updatin",
   );
 }
 
+//This code fetches and returns the inventory
 async function fetchInventory() {
   const response = await fetch(
     `https://api2.kirka.io/api/${translations["inventory"]}`,
@@ -62,6 +81,7 @@ async function fetchInventory() {
   return await response.json();
 }
 
+//this code opens cards
 async function openCard(cardid) {
   let bodyobj = {};
   bodyobj[translations["id"]] = cardid;
@@ -87,6 +107,7 @@ async function openCard(cardid) {
   return returnobj;
 }
 
+//This code displays the result of the container ingame + in the console
 function ingameShowcase(message, rarity, name) {
   rarity = translations[rarity];
   const text = `${rarity} ${message} from: ${name}`;
@@ -114,6 +135,7 @@ function ingameShowcase(message, rarity, name) {
   }, 5000);
 }
 
+//This code is for an animation for a specific rarity
 function confettiAnimation() {
   const duration = 15 * 1000;
   const animationEnd = Date.now() + duration;
@@ -152,6 +174,7 @@ function confettiAnimation() {
   }, 250);
 }
 
+//This one handles updatign the counter variable
 function updateCounter(counter, cardskipper) {
   counter = (counter + 1) % cards.length;
   while (cardskipper[counter] >= 2) {
@@ -166,6 +189,7 @@ function updateCounter(counter, cardskipper) {
   return counter;
 }
 
+//This processes my cardskipper variable
 function processCardskipper(cardskipper, inventory) {
   inventory.forEach((item) => {
     for (let i = 0; i < cards.length; i++) {
@@ -197,36 +221,23 @@ try {
     let script = document.createElement("script");
     script.id = "konfettijs";
     script.src =
-      "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js";
+      "https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js";
     document.head.appendChild(script);
   }
 
   let counter = 0;
   let interval = setInterval(async () => {
     let cardresult = await openCard(cards[counter]["cardid"]);
-    if (cardresult[translations["rarity"]]) {
-      if (
-        Object.keys(coloroutput).includes(
-          translations[cardresult[translations["rarity"]]],
-        )
-      ) {
-        ingameShowcase(
-          cardresult[translations["name"]],
-          cardresult[translations["rarity"]],
-          cards[counter]["name"],
-        );
-        if (
-          translations[cardresult[translations["rarity"]]] ==
-          translations["MYTHICAL"]
-        ) {
+    let resultRarity = cardresult[translations["rarity"]];
+    let resultName = cardresult[translations["name"]];
+    if (resultRarity) {
+      if (Object.keys(coloroutput).includes(translations[resultRarity])) {
+        ingameShowcase(resultName, resultRarity, cards[counter]["name"]);
+        if (translations[resultRarity] == "MYTHICAL") {
           confettiAnimation();
         }
       } else {
-        console.log(
-          cardresult[translations["rarity"]] +
-            " " +
-            cardresult[translations["name"]],
-        );
+        console.log(`${resultRarity} ${resultName}`);
       }
     } else if (cardresult["code"] == 9910) {
       console.log("RATELIMIT");
