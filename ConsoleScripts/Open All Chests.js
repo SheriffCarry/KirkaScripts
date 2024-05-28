@@ -1,20 +1,25 @@
 //Chest Open delay
 let openingdelay = 2000; //2000 = 2.0s, make it higher to be more safe. (Recently some people have experienced issues with opening chests... Higher delay could fix it)
+let chests;
 //Delete the row of the chest, you don't want to get opened
-let chests = [
-  {
-    chestid: "077a4cf2-7b76-4624-8be6-4a7316cf5906",
-    name: "Golden",
-  },
-  {
-    chestid: "ec230bdb-4b96-42c3-8bd0-65d204a153fc",
-    name: "Ice",
-  },
-  {
-    chestid: "71182187-109c-40c9-94f6-22dbb60d70ee",
-    name: "Wood",
-  },
-];
+try {
+  chests = customchestlist;
+} catch {
+  chests = [
+    {
+      chestid: "077a4cf2-7b76-4624-8be6-4a7316cf5906",
+      name: "Golden",
+    },
+    {
+      chestid: "ec230bdb-4b96-42c3-8bd0-65d204a153fc",
+      name: "Ice",
+    },
+    {
+      chestid: "71182187-109c-40c9-94f6-22dbb60d70ee",
+      name: "Wood",
+    },
+  ];
+}
 
 let coloroutput = {
   MYTHICAL: "c20025",
