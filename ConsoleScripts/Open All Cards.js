@@ -1,13 +1,18 @@
 //Card Open delay
 let openingdelay = 2000; //2000 = 2.0s, make it higher to be more safe. (Recently some people have experienced issues with opening cards... Higher delay could fix it)
+let cards;
 //Delete the row of the cards, you don't want to get opened
-let cards = [
-  { cardid: "723c4ba7-57b3-4ae4-b65e-75686fa77bf2", name: "Cold" },
-  { cardid: "723c4ba7-57b3-4ae4-b65e-75686fa77bf1", name: "Girls band" },
-  { cardid: "6281ed5a-663a-45e1-9772-962c95aa4605", name: "Party" },
-  { cardid: "9cc5bd60-806f-4818-a7d4-1ba9b32bd96c", name: "Soldiers" },
-  { cardid: "a5002827-97d1-4eb4-b893-af4047e0c77f", name: "Periodic" },
-];
+try {
+  cards = customcardlist;
+} catch {
+  cards = [
+    { cardid: "723c4ba7-57b3-4ae4-b65e-75686fa77bf2", name: "Cold" },
+    { cardid: "723c4ba7-57b3-4ae4-b65e-75686fa77bf1", name: "Girls band" },
+    { cardid: "6281ed5a-663a-45e1-9772-962c95aa4605", name: "Party" },
+    { cardid: "9cc5bd60-806f-4818-a7d4-1ba9b32bd96c", name: "Soldiers" },
+    { cardid: "a5002827-97d1-4eb4-b893-af4047e0c77f", name: "Periodic" },
+  ];
+}
 
 let coloroutput = {
   MYTHICAL: "c20025",
