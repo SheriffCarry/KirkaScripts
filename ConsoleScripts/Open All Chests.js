@@ -52,8 +52,6 @@ Object.keys(translations).forEach((item) => {
   let translationItem = translations[item];
   if (item == "MYTHICAL") {
     translations[translationItem] = item;
-  } else if (item == "MYTHICAL") {
-    translations[translationItem] = item;
   } else if (item == "LEGENDARY") {
     translations[translationItem] = item;
   } else if (item == "EPIC") {
