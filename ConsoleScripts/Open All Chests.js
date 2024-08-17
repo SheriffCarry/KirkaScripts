@@ -31,20 +31,20 @@ let coloroutput = {
 };
 
 let translations = {
-  name: "wnMWwWN",
-  rarity: "wMWwW",
-  MYTHICAL: "wmWWNMwn",
-  LEGENDARY: "wWWNMnw",
-  EPIC: "wnMWwWm",
-  RARE: "wnMWwWNm",
+  name: "wnMWWwm",
+  rarity: "wMWWmnNw",
+  MYTHICAL: "wmWWNwnM",
+  LEGENDARY: "wWWNnm",
+  EPIC: "wnMWWN",
+  RARE: "wnMWWwmN",
   COMMON: "wMmWwnNW",
-  inventory: "wWWNn",
-  openChest: "wWWNwmMn",
+  inventory: "wWWNwnmM",
+  openChest: "wWWNwnm",
   openCharacterCard: "wWmWwN",
-  id: "wNwMWmn",
-  item: "wnMWwWmN",
-  notifications: "wmwNWMnW",
-  isWon: "wMwnW",
+  id: "wNwM",
+  item: "wnMWWNw",
+  notifications: "wMWmnNW",
+  isWon: "wMwnNWmW",
 };
 
 //This Part reverses my translations
