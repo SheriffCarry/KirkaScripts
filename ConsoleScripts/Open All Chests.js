@@ -67,20 +67,16 @@ function logCredits() {
 
 //This code fetches and returns the inventory
 async function fetchInventory() {
-  try {
-    const response = await fetch(
-      `https://api2.kirka.io/api/${translations["inventory"]}`,
-      {
-        headers: {
-          accept: "application/json",
-          authorization: `Bearer ${localStorage.token}`,
-        },
+  const response = await fetch(
+    `https://api2.kirka.io/api/${translations["inventory"]}`,
+    {
+      headers: {
+        accept: "application/json",
+        authorization: `Bearer ${localStorage.token}`,
       },
-    );
-    return await response.json();
-  } catch {
-    ingameShowcase_messages("Request issue", 15000);
-  }
+    },
+  );
+  return await response.json();
 }
 
 //this code opens chests
