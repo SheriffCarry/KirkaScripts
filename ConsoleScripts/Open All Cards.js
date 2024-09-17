@@ -23,22 +23,10 @@ let coloroutput = {
   DEFAULT: "ffffff",
 };
 
-let translations = {
-  name: "wnMWWwm",
-  rarity: "wMWWmnNw",
-  MYTHICAL: "wmWWNwnM",
-  LEGENDARY: "wWWNnm",
-  EPIC: "wnMWWN",
-  RARE: "wnMWWwmN",
-  COMMON: "wMmWwnNW",
-  inventory: "wWWNwnmM",
-  openChest: "wWWNwnm",
-  openCharacterCard: "wWmWwN",
-  id: "wNwM",
-  item: "wnMWWNw",
-  notifications: "wMWmnNW",
-  isWon: "wMwnNWmW",
-};
+let translations_req = await fetch(
+  "https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/ConsoleScripts/microwaves.json",
+);
+let translations = await translations_req.json();
 
 //This Part reverses my translations
 Object.keys(translations).forEach((item) => {
@@ -110,9 +98,54 @@ async function openCard(cardid) {
   return returnobj;
 }
 
+function ingameShowcase_messages(message, displaylength) {
+  let elem = document.createElement("div");
+  elem.classList = "vue-notification-wrapper";
+  elem.style =
+    "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
+  elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text">${message}</span></div>`;
+  elem.onclick = function () {
+    try {
+      elem.remove();
+    } catch {}
+  };
+  document
+    .getElementsByClassName("vue-notification-group")[0]
+    .children[0].appendChild(elem);
+  setTimeout(() => {
+    try {
+      elem.remove();
+    } catch {}
+  }, displaylength);
+}
+
+function ingameShowcase_end() {
+  let end_elem = document.createElement("div");
+  end_elem.classList = "vue-notification-wrapper";
+  end_elem.style =
+    "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
+  end_elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text">Finished running</span></div>`;
+  end_elem.onclick = function () {
+    try {
+      end_elem.remove();
+    } catch {}
+  };
+  document
+    .getElementsByClassName("vue-notification-group")[0]
+    .children[0].appendChild(end_elem);
+  setTimeout(() => {
+    try {
+      end_elem.remove();
+    } catch {}
+  }, 15000);
+}
+
 //This code displays the result of the container ingame + in the console
 function ingameShowcase(message, rarity, name) {
   rarity = translations[rarity];
+  if (rarity == undefined) {
+    return;
+  }
   const text = `${rarity} ${message} from: ${name}`;
   const style = `color: #${coloroutput[rarity] || coloroutput.DEFAULT}`;
   console.log(`%c${text}`, style);
@@ -194,16 +227,21 @@ function updateCounter(counter, cardskipper) {
 
 //This processes my cardskipper variable
 function processCardskipper(cardskipper, inventory) {
-  inventory.forEach((item) => {
-    for (let i = 0; i < cards.length; i++) {
-      if (
-        item[translations["item"]][translations["id"]] == cards[i]["cardid"]
-      ) {
-        cardskipper[i] = 0;
+  try {
+    inventory.forEach((item) => {
+      for (let i = 0; i < cards.length; i++) {
+        if (
+          item[translations["item"]][translations["id"]] == cards[i]["cardid"]
+        ) {
+          cardskipper[i] = 0;
+        }
       }
-    }
-  });
-  return cardskipper;
+    });
+    return cardskipper;
+  } catch {
+    ingameShowcase_messages("Kirka microwave issue", 15000);
+    return cardskipper;
+  }
 }
 
 let cardskipper = new Array(cards.length).fill(2);
@@ -254,25 +292,8 @@ try {
     let check = cardskipper.reduce((acc, val) => acc + val, 0);
     if (check == cardskipper.length * 2) {
       clearInterval(interval);
-      let endelem = document.createElement("div");
-      endelem.classList = "vue-notification-wrapper";
-      endelem.style =
-        "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
-      endelem.innerHTML =
-        '<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text">Finished Running</span></div>';
-      endelem.onclick = function () {
-        try {
-          endelem.remove();
-        } catch {}
-      };
-      document
-        .getElementsByClassName("vue-notification-group")[0]
-        .children[0].appendChild(endelem);
-      setTimeout(() => {
-        try {
-          endelem.remove();
-        } catch {}
-      }, 15000);
+      console.log("Finished Running");
+      ingameShowcase_end();
     }
   }, openingdelay);
 })();
