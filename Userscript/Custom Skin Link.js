@@ -3,7 +3,7 @@
 // @description  Allows you to easily change the skin link
 // @version      0.1
 // @author       SheriffCarry
-// @github       https://api.github.com/repos/SheriffCarry/KirkaScripts/contents/Userscript/Custom Skin Link.js
+// @github       https://api.github.com/repos/SheriffCarry/KirkaScripts/contents/Userscript/Custom%20Skin%20Link.js
 // ==/UserScript==
 
 //Runs on the original BKC custom skin link feature (made by infi and boden)
