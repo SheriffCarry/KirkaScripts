@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Userscript Manager
 // @description  Allows easy installation of userscripts + enabled autoupdates
-// @version      0.3
+// @version      0.4
 // @author       SheriffCarry
 // @github       https://api.github.com/repos/SheriffCarry/KirkaScripts/contents/Userscript/Userscript%20Manager.js
 // ==/UserScript==
@@ -152,7 +152,7 @@ function add_userscripts() {
   updateScripts();
 }
 
-function updateScripts() {
+async function updateScripts() {
   fs.readdir(scriptsPath, (err, files) => {
     if (err) {
       return console.error("Unable to scan directory:", err);
@@ -184,35 +184,41 @@ function updateScripts() {
 }
 
 async function downloadScript(githuburl, oldfilename = "", oldversion = 0) {
-  fetch(githuburl)
-    .then((response) => response.json())
-    .then((fileData) => {
-      let filename = fileData.name;
-      if (oldfilename != "") {
-        filename = oldfilename;
-      }
-      let filepath = `${scriptsPath}\\${filename}`;
-      let content = atob(fileData.content);
-      let metadataRegex = /\/\/\s*@(\w+)\s+(.+)/g;
-      let match;
-      let metadata = {};
+  return new Promise((resolve, reject) => {
+    fetch(githuburl)
+      .then((response) => response.json())
+      .then((fileData) => {
+        let filename = fileData.name;
+        if (oldfilename != "") {
+          filename = oldfilename;
+        }
+        let filepath = `${scriptsPath}\\${filename}`;
+        let content = atob(fileData.content);
+        let metadataRegex = /\/\/\s*@(\w+)\s+(.+)/g;
+        let match;
+        let metadata = {};
 
-      while ((match = metadataRegex.exec(content)) !== null) {
-        let key = match[1].trim();
-        let value = match[2].trim();
-        metadata[key] = value;
-      }
-      if (metadata["version"] > oldversion) {
-        console.log("UPDATING");
-        fs.writeFile(filepath, content, (err) => {
-          if (err) {
-            console.error("Error writing to the file:", err);
-          } else {
-            console.log(`Downloaded.`);
-            return "Downloaded.";
-          }
-        });
-      }
-    })
-    .catch((error) => console.error("Error fetching file:", error));
+        while ((match = metadataRegex.exec(content)) !== null) {
+          let key = match[1].trim();
+          let value = match[2].trim();
+          metadata[key] = value;
+        }
+        if (Number(metadata["version"]) > Number(oldversion)) {
+          console.log("UPDATING");
+          fs.writeFile(filepath, content, (err) => {
+            if (err) {
+              console.error("Error writing to the file:", err);
+              resolve("error");
+            } else {
+              console.log(`Downloaded.`);
+              resolve("Downloaded.");
+            }
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching file:", error);
+        resolve("error");
+      });
+  });
 }
