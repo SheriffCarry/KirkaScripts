@@ -137,9 +137,10 @@ function add_userscripts() {
       downloadbutton.type = "button";
       downloadbutton.innerText = "Download";
       downloadbutton.id = listitem["GitHub"];
-      downloadbutton.onclick = function () {
+      downloadbutton.onclick = async function () {
         document.getElementById(listitem["GitHub"]).disabled = true;
-        alert(downloadScript(listitem["GitHub"]));
+		let responce = await downloadScript(listitem["GitHub"])
+        alert(responce);
       };
       left.appendChild(span);
       option.appendChild(left);
@@ -165,16 +166,13 @@ function updateScripts() {
         if (err) {
           return console.error(`Error reading file ${file}:`, err);
         }
-
-        //console.log(`Content of ${file}:`);
-        //console.log(data);
         let metadataRegex = /\/\/\s*@(\w+)\s+(.+)/g;
         let match;
-        const metadata = {};
+        let metadata = {};
 
-        while ((match = metadataRegex.exec(scriptText)) !== null) {
-          const key = match[1].trim();
-          const value = match[2].trim();
+        while ((match = metadataRegex.exec(data)) !== null) {
+          let key = match[1].trim();
+          let value = match[2].trim();
           metadata[key] = value;
         }
         if (metadata["github"]) {
@@ -197,14 +195,15 @@ async function downloadScript(githuburl, oldfilename = "", oldversion = 0) {
       let content = atob(fileData.content);
       let metadataRegex = /\/\/\s*@(\w+)\s+(.+)/g;
       let match;
-      const metadata = {};
+      let metadata = {};
 
       while ((match = metadataRegex.exec(content)) !== null) {
-        const key = match[1].trim();
-        const value = match[2].trim();
+        let key = match[1].trim();
+        let value = match[2].trim();
         metadata[key] = value;
       }
-      if (Number(metadata["version"]) > Number(oldversion)) {
+      if (metadata["version"] > oldversion) {
+		  console.log("UPDATING")
         fs.writeFile(filepath, content, (err) => {
           if (err) {
             console.error("Error writing to the file:", err);
