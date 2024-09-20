@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Userscript Manager
 // @description  Allows easy installation of userscripts + enabled autoupdates
-// @version      0.1
+// @version      0.2
 // @author       SheriffCarry
 // @github       https://api.github.com/repos/SheriffCarry/KirkaScripts/contents/Userscript/Userscript%20Manager.js
 // ==/UserScript==
@@ -139,7 +139,7 @@ function add_userscripts() {
       downloadbutton.id = listitem["GitHub"];
       downloadbutton.onclick = function () {
         document.getElementById(listitem["GitHub"]).disabled = true;
-        downloadScript(listitem["GitHub"]);
+        alert(downloadScript(listitem["GitHub"]));
       };
       left.appendChild(span);
       option.appendChild(left);
@@ -178,14 +178,14 @@ function updateScripts() {
           metadata[key] = value;
         }
         if (metadata["github"]) {
-          downloadScript(metadata["github"], file);
+          downloadScript(metadata["github"], file, metadata["version"]);
         }
       });
     });
   });
 }
 
-async function downloadScript(githuburl, oldfilename = "") {
+async function downloadScript(githuburl, oldfilename = "", oldversion = 0) {
   fetch(githuburl)
     .then((response) => response.json())
     .then((fileData) => {
@@ -195,13 +195,25 @@ async function downloadScript(githuburl, oldfilename = "") {
       }
       let filepath = `${scriptsPath}\\${filename}`;
       let content = atob(fileData.content);
-      fs.writeFile(filepath, content, (err) => {
-        if (err) {
-          console.error("Error writing to the file:", err);
-        } else {
-          alert(`Downloaded.`);
-        }
-      });
+      let metadataRegex = /\/\/\s*@(\w+)\s+(.+)/g;
+      let match;
+      const metadata = {};
+
+      while ((match = metadataRegex.exec(content)) !== null) {
+        const key = match[1].trim();
+        const value = match[2].trim();
+        metadata[key] = value;
+      }
+      if (metadata["version"] > oldversion) {
+        fs.writeFile(filepath, content, (err) => {
+          if (err) {
+            console.error("Error writing to the file:", err);
+          } else {
+            console.log(`Downloaded.`);
+            return "Downloaded.";
+          }
+        });
+      }
     })
     .catch((error) => console.error("Error fetching file:", error));
 }
