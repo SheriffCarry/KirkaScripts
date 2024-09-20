@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Userscript Manager
 // @description  Allows easy installation of userscripts + enabled autoupdates
-// @version      0.2
+// @version      0.3
 // @author       SheriffCarry
 // @github       https://api.github.com/repos/SheriffCarry/KirkaScripts/contents/Userscript/Userscript%20Manager.js
 // ==/UserScript==
@@ -139,7 +139,7 @@ function add_userscripts() {
       downloadbutton.id = listitem["GitHub"];
       downloadbutton.onclick = async function () {
         document.getElementById(listitem["GitHub"]).disabled = true;
-		let responce = await downloadScript(listitem["GitHub"])
+        let responce = await downloadScript(listitem["GitHub"]);
         alert(responce);
       };
       left.appendChild(span);
@@ -203,7 +203,7 @@ async function downloadScript(githuburl, oldfilename = "", oldversion = 0) {
         metadata[key] = value;
       }
       if (metadata["version"] > oldversion) {
-		  console.log("UPDATING")
+        console.log("UPDATING");
         fs.writeFile(filepath, content, (err) => {
           if (err) {
             console.error("Error writing to the file:", err);
