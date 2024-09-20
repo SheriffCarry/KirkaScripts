@@ -204,7 +204,7 @@ async function downloadScript(githuburl, oldfilename = "", oldversion = 0) {
         const value = match[2].trim();
         metadata[key] = value;
       }
-      if (metadata["version"] > oldversion) {
+      if (Number(metadata["version"]) > Number(oldversion)) {
         fs.writeFile(filepath, content, (err) => {
           if (err) {
             console.error("Error writing to the file:", err);
