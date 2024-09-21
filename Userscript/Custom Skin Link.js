@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Custom Skin Link
 // @description  Allows you to easily change the skin link
-// @version      0.1
+// @version      0.2
 // @author       SheriffCarry
 // @github       https://api.github.com/repos/SheriffCarry/KirkaScripts/contents/Userscript/Custom%20Skin%20Link.js
 // ==/UserScript==
@@ -28,19 +28,37 @@ colorpicker_body_label.innerHTML = "body color";
 let colorpicker_body = document.createElement("input");
 colorpicker_body.type = "color";
 colorpicker_body.id = "colorpicker_body";
-//colorpicker_body.value = "#00ff00";
 let colorpicker_output = document.createElement("input");
 colorpicker_output.type = "text";
 colorpicker_output.id = "colorpicker_output";
+colorpicker_output.readOnly = true;
 let csl_enabled = document.createElement("div");
 csl_enabled.className = "option";
 csl_enabled.innerHTML =
   '<div class="left"><span>Enabled</span></div><div class="checkbox"><input type="checkbox" id="csl_enabled"><label for="csl_enabled"></label></div>';
+let output_container = document.createElement("div");
+output_container.className = "option";
+let csl_url_or_base64 = document.createElement("div");
+csl_url_or_base64.className = "checkbox";
+csl_url_or_base64.innerHTML =
+  '<div class="checkbox"><input type="checkbox" id="csl_url_or_base64"><label for="csl_url_or_base64"></label></div>';
+let csl_colorpicker_inputurl = document.createElement("input");
+csl_colorpicker_inputurl.type = "text";
+csl_colorpicker_inputurl.id = "csl_colorpicker_inputurl";
+csl_colorpicker_inputurl.placeholder = "Insert custom url here";
 let tooltip_container = document.createElement("div");
 tooltip_container.className = "tooltip-container-csl";
 let tooltip_icon = document.createElement("span");
 tooltip_icon.className = "info-icon-csl";
 tooltip_icon.innerHTML = "i";
+let option_inputfield_description = document.createElement("div");
+option_inputfield_description.className = "option";
+let description_left = document.createElement("div");
+description_left.className = "left";
+description_left.innerHTML = "Skin from Imagebuilder";
+let description_right = document.createElement("div");
+description_right.className = "right";
+description_right.innerHTML = "Skin from your input";
 let tooltip_text = document.createElement("div");
 tooltip_text.className = "tooltip-text-csl";
 tooltip_text.innerText = `Made by SheriffCarry\nRuns on the original BKC custom skin link\n feature (made by infi and boden)`;
@@ -104,6 +122,17 @@ style.innerHTML = `
     visibility: visible;
     opacity: 1;
 }
+
+.highlight_textarea {
+border-color: #ffa500 !important;
+}
+input[type="text"]::placeholder {
+color: #999 !important;
+transition: color 0.3s ease !important;
+}
+input[type="text"]:hover::placeholder {
+color: #555 !important;
+}
 `;
 option.appendChild(canvas);
 option.appendChild(colorpicker_head_label);
@@ -116,7 +145,13 @@ option_group.appendChild(style);
 option_group.appendChild(tooltip_container);
 option_group.appendChild(csl_enabled);
 option_group.appendChild(option);
-option_group.appendChild(colorpicker_output);
+output_container.appendChild(colorpicker_output);
+output_container.appendChild(csl_url_or_base64);
+output_container.appendChild(csl_colorpicker_inputurl);
+option_inputfield_description.appendChild(description_left);
+option_inputfield_description.appendChild(description_right);
+option_group.appendChild(option_inputfield_description);
+option_group.appendChild(output_container);
 let default_url =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAANJJREFUeF7t2EEKBDEIBdF4/0M7MAeIi0HmQ15v022LaJWkTp8+l6frenz79HtWXeM7//x/KYAOMAIY8E8ITYTchjAIPm+BPv2b6KceDj8vBdABRgADwjm1mh4IPm+BaRFa7b+A4OMqHJDjagoKYASGG6HV/gsIbgSMgBG4X4oGjOlqChiAARiAAW9fiGAABmAABqyuWuHBbYIswAIswALhoF5NjwVYgAVYgAVWMRsenAVYgAVYgAXCQb2aHguwAAuwAAusYjY8OAuwAAuwwNMW+AByY7e5Jy8jiwAAAABJRU5ErkJggg==";
 let change_event = new Event("change", { bubbles: true });
@@ -133,6 +168,32 @@ document.addEventListener("DOMContentLoaded", async () => {
     startfunction();
   }, 1000);
 });
+
+async function fetchImageAsBase64(url) {
+  try {
+    const response = await fetch(url);
+
+    const contentType = response.headers.get("content-type");
+    if (!contentType || !contentType.startsWith("image")) {
+      throw new Error("URL does not point to an image");
+    }
+
+    const blob = await response.blob();
+    const base64String = await blobToBase64(blob);
+    return base64String;
+  } catch (error) {
+    console.error("Error fetching or converting image: ", error);
+  }
+}
+
+function blobToBase64(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
 
 function displayStartingCanvas(img_display) {
   let canvas = d_canvas_colorpicker;
@@ -154,10 +215,55 @@ function displayNewImage(src) {
   ctx.drawImage(img_display, 0, 0);
 }
 
+function handleHighlight() {
+  if (localStorage.csl_url_or_base64 == "true") {
+    document.getElementById("colorpicker_output").className = "";
+    document.getElementById("csl_colorpicker_inputurl").className =
+      "highlight_textarea";
+  } else {
+    document.getElementById("colorpicker_output").className =
+      "highlight_textarea";
+    document.getElementById("csl_colorpicker_inputurl").className = "";
+  }
+}
+
 function startfunction() {
   //Checks if the script-options are loaded in to ensure it can add stuff in the right menu
   if (document.getElementById("scripts-options")) {
     document.getElementById("scripts-options").appendChild(option_group);
+    handleHighlight();
+    let csl_url_or_base64 = document.getElementById("csl_url_or_base64");
+    if (localStorage.csl_url_or_base64 == undefined) {
+      localStorage.csl_url_or_base64 = false;
+    }
+    if (localStorage.csl_url_or_base64 == "true") {
+      csl_url_or_base64.checked = true;
+      handleHighlight();
+    }
+    csl_url_or_base64.addEventListener("change", function (event) {
+      let value = csl_url_or_base64.checked;
+      if (localStorage.csl_url_or_base64 == undefined) {
+        localStorage.csl_url_or_base64 = value;
+      } else if (localStorage.csl_url_or_base64 != value) {
+        localStorage.csl_url_or_base64 = value;
+      }
+      handleHighlight();
+    });
+    let csl_colorpicker_inputurl = document.getElementById(
+      "csl_colorpicker_inputurl",
+    );
+    if (localStorage.csl_colorpicker_inputurl != undefined) {
+      csl_colorpicker_inputurl.value = localStorage.csl_colorpicker_inputurl;
+    }
+    csl_colorpicker_inputurl.addEventListener("change", function (event) {
+      localStorage.csl_colorpicker_inputurl = csl_colorpicker_inputurl.value;
+      fetchImageAsBase64(csl_colorpicker_inputurl.value).then((base64Image) => {
+        if (typeof base64Image == "string") {
+          csl_colorpicker_inputurl.value = base64Image;
+          localStorage.csl_colorpicker_inputurl = base64Image;
+        }
+      });
+    });
     d_colorpicker_output = document.getElementById("colorpicker_output");
     d_csl_enabled = document.getElementById("csl_enabled");
     d_canvas_colorpicker = document.getElementById("canvas_colorpicker");
@@ -337,8 +443,13 @@ Array.isArray = (...args) => {
       !args[0].map.image.src.includes(muzzleImg2) &&
       localStorage.csl_enabled == "true"
     ) {
-      if (localStorage.csl_url !== "")
-        args[0].map.image.src = localStorage.csl_url;
+      let useurl = "";
+      if (localStorage.csl_url_or_base64 == "false") {
+        useurl = localStorage.csl_url;
+      } else {
+        useurl = localStorage.csl_colorpicker_inputurl;
+      }
+      if (useurl !== "" && useurl != undefined) args[0].map.image.src = useurl;
     }
   }
 
