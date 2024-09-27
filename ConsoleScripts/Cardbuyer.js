@@ -1,6 +1,6 @@
 (async () => {
   let amount = 1;
-  let card = "1"; //4 = Party, 5 = Soldiers, 6 = GirlsBand, 30 = Cold
+  let card = "1"; //4 = Party, 5 = Soldiers, 6 = GirlsBand, 30 = Cold, 31 = Periodic
   for (let index = 0; index < amount; index++) {
     let req = await fetch("https://api.kirka.io/api/shop/buy", {
       headers: {
