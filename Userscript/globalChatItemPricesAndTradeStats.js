@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Global Chat Item Prices and Trade Stats
 // @description  Add (price) in global chat after each [item], and some trade stats if the offering is good or a scam.
-// @version      0.4
+// @version      0.5
 // @author       SheriffCarry, skywalk
 // @github       https://api.github.com/repos/SheriffCarry/KirkaScripts/contents/Userscript/globalChatItemPricesAndTradeStats.js
 // ==/UserScript==
@@ -228,7 +228,7 @@ function trimMessage(messageSplit) {
           const itemPrice = searchItemByName(name, pricelistItemType);
           if (isOffering) offeringTotal += quantity * itemPrice;
           else wantedTotal += quantity * itemPrice;
-          newMessage += `${segment} (${(quantity>1)?`${quantity}*${formatNumber(itemPrice)}= `:''}${formatNumber(quantity * itemPrice)})`;
+          newMessage += `${segment} (${(quantity>1)?`${quantity}x${formatNumber(itemPrice)}= `:''}${formatNumber(quantity * itemPrice)})`;
         }
         if (!itemDetails.length) newMessage += segment;
       }
