@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Userscript Manager
 // @description  Allows easy installation of userscripts + enabled autoupdates
-// @version      0.4
+// @version      0.5
 // @author       SheriffCarry
 // @github       https://api.github.com/repos/SheriffCarry/KirkaScripts/contents/Userscript/Userscript%20Manager.js
 // ==/UserScript==
@@ -139,8 +139,27 @@ function add_userscripts() {
       downloadbutton.id = listitem["GitHub"];
       downloadbutton.onclick = async function () {
         document.getElementById(listitem["GitHub"]).disabled = true;
-        let responce = await downloadScript(listitem["GitHub"]);
-        alert(responce);
+        //let responce = await downloadScript(listitem["GitHub"]);
+        let filename_split = listitem["GitHub"].split("/");
+        let filename = filename_split[filename_split.length - 1];
+        filename = decodeURIComponent(filename);
+        let output = `// ==UserScript==`;
+        output += `\n// @name ${listitem["Name"]}`;
+        output += `\n// @git`;
+        output += `\hub ${listitem["GitHub"]}`;
+        fs.writeFile(`${scriptsPath}\\${filename}`, output, (err) => {
+          if (err) {
+            alert("Weird error idk why");
+            console.error(err);
+          } else {
+            alert(
+              "Done successfull, will be added in a bit (as fast as possible)",
+            );
+            setTimeout(() => {
+              updateScripts();
+            }, 2000);
+          }
+        });
       };
       left.appendChild(span);
       option.appendChild(left);
@@ -217,7 +236,7 @@ async function downloadScript(githuburl, oldfilename = "", oldversion = 0) {
         }
       })
       .catch((error) => {
-        console.error("Error fetching file:", error);
+        console.error("Error fetching file:", error, githuburl.toString());
         resolve("error");
       });
   });
