@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Userscript Manager
 // @description  Allows easy installation of userscripts + enabled autoupdates
-// @version      0.5
+// @version      6
 // @author       SheriffCarry
 // @github       https://api.github.com/repos/SheriffCarry/KirkaScripts/contents/Userscript/Userscript%20Manager.js
 // ==/UserScript==
@@ -93,10 +93,10 @@ tooltip_container.appendChild(tooltip_text);
 optionGroup.appendChild(tooltip_container);
 
 document.addEventListener("DOMContentLoaded", async () => {
-  fetchUserscripts();
-  setTimeout(() => {
-    startfunction();
-  }, 1000);
+  await fetchUserscripts();
+  //setTimeout(() => {
+  startfunction();
+  //}, 1000);
 });
 
 async function fetchUserscripts() {
@@ -105,6 +105,7 @@ async function fetchUserscripts() {
   );
   userscriptlist = await sus.json();
   fetcheduserscripts = true;
+  return;
 }
 
 function startfunction() {
@@ -139,27 +140,7 @@ function add_userscripts() {
       downloadbutton.id = listitem["GitHub"];
       downloadbutton.onclick = async function () {
         document.getElementById(listitem["GitHub"]).disabled = true;
-        //let responce = await downloadScript(listitem["GitHub"]);
-        let filename_split = listitem["GitHub"].split("/");
-        let filename = filename_split[filename_split.length - 1];
-        filename = decodeURIComponent(filename);
-        let output = `// ==UserScript==`;
-        output += `\n// @name ${listitem["Name"]}`;
-        output += `\n// @git`;
-        output += `\hub ${listitem["GitHub"]}`;
-        fs.writeFile(`${scriptsPath}\\${filename}`, output, (err) => {
-          if (err) {
-            alert("Weird error idk why");
-            console.error(err);
-          } else {
-            alert(
-              "Done successfull, will be added in a bit (as fast as possible)",
-            );
-            setTimeout(() => {
-              updateScripts();
-            }, 2000);
-          }
-        });
+        let responce = await downloadScript(listitem["GitHub"], "true");
       };
       left.appendChild(span);
       option.appendChild(left);
@@ -168,11 +149,27 @@ function add_userscripts() {
     });
   }
   document.getElementById("scripts-options").appendChild(optionGroup);
-  updateScripts();
+  setTimeout(() => {
+    updateScripts();
+  }, 1000);
+}
+
+function readScriptsDirectory() {
+  return new Promise((resolve, reject) => {
+    fs.readdir(scriptsPath, (err, files) => {
+      if (err) {
+        console.error("Error reading directory:", err);
+        return reject(err);
+      }
+      console.log("TEST0");
+      resolve(files);
+    });
+  });
 }
 
 async function updateScripts() {
-  fs.readdir(scriptsPath, (err, files) => {
+  console.log("UPDATING ATTEMPT");
+  fs.readdir(path.join(scriptsPath), (err, files) => {
     if (err) {
       return console.error("Unable to scan directory:", err);
     }
@@ -188,21 +185,32 @@ async function updateScripts() {
         let metadataRegex = /\/\/\s*@(\w+)\s+(.+)/g;
         let match;
         let metadata = {};
-
         while ((match = metadataRegex.exec(data)) !== null) {
           let key = match[1].trim();
           let value = match[2].trim();
           metadata[key] = value;
         }
         if (metadata["github"]) {
-          downloadScript(metadata["github"], file, metadata["version"]);
+          downloadScript(
+            metadata["github"],
+            "false",
+            file,
+            metadata["version"],
+          );
         }
       });
     });
+    console.log("DONE UPDATING SCRIPTS");
   });
 }
 
-async function downloadScript(githuburl, oldfilename = "", oldversion = 0) {
+async function downloadScript(
+  githuburl,
+  newcheck,
+  oldfilename = "",
+  oldversion = 0,
+) {
+  console.log("DOWNLOADING");
   return new Promise((resolve, reject) => {
     fetch(githuburl)
       .then((response) => response.json())
@@ -224,15 +232,15 @@ async function downloadScript(githuburl, oldfilename = "", oldversion = 0) {
         }
         if (Number(metadata["version"]) > Number(oldversion)) {
           console.log("UPDATING");
-          fs.writeFile(filepath, content, (err) => {
-            if (err) {
-              console.error("Error writing to the file:", err);
-              resolve("error");
-            } else {
-              console.log(`Downloaded.`);
-              resolve("Downloaded.");
+          try {
+            fs.writeFileSync(filepath, content);
+            if (newcheck == "true") {
+              alert("Downloaded.");
             }
-          });
+          } catch (error) {
+            alert("Error writing file: " + error.message);
+            console.error(error);
+          }
         }
       })
       .catch((error) => {
