@@ -92,7 +92,7 @@
     );
     let json = await response.json();
     let returnobj = {};
-    json.forEach((item) => {
+    Array.from(json).forEach((item) => {
       Object.keys(item).forEach((key) => {
         if (typeof item[key] == "boolean" && item[key] == true) {
           returnobj = item;
