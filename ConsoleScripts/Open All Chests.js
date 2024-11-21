@@ -318,7 +318,7 @@
       let chestresult = await openChest(chests[counter]["chestid"]);
       let resultRarity = chestresult[translations["rarity"]];
       let resultName = chestresult[translations["name"]];
-      if (resultRarity) {
+      if (resultName) {
         ingameShowcase(resultName, resultRarity, chests[counter]["name"]);
         if (translations[resultRarity] == "MYTHICAL") {
           confettiAnimation();
