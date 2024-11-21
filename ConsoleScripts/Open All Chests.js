@@ -146,7 +146,7 @@
   function ingameShowcase(message, rarity, name) {
     rarity = translations[rarity];
     if (rarity == undefined) {
-      return;
+      rarity = "Unknown-Rarity";
     }
     const text = `${rarity} ${message} from: ${name}`;
     const style = `color: #${coloroutput[rarity] || coloroutput.DEFAULT}`;
@@ -319,13 +319,9 @@
       let resultRarity = chestresult[translations["rarity"]];
       let resultName = chestresult[translations["name"]];
       if (resultRarity) {
-        if (Object.keys(coloroutput).includes(translations[resultRarity])) {
-          ingameShowcase(resultName, resultRarity, chests[counter]["name"]);
-          if (translations[resultRarity] == "MYTHICAL") {
-            confettiAnimation();
-          }
-        } else {
-          console.log(`${resultRarity} ${resultName}`);
+        ingameShowcase(resultName, resultRarity, chests[counter]["name"]);
+        if (translations[resultRarity] == "MYTHICAL") {
+          confettiAnimation();
         }
       } else if (chestresult["code"] == 9910) {
         console.log("RATELIMIT");
