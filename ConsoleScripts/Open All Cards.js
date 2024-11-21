@@ -92,10 +92,12 @@
     );
     let json = await response.json();
     let returnobj = {};
-    Array.from(json).forEach((item) => {
-      if (item[translations["isWon"]] && item[translations["isWon"]] == true) {
-        returnobj = item;
-      }
+    json.forEach((item) => {
+      Object.keys(item).forEach((key) => {
+        if (typeof item[key] == "boolean" && item[key] == true) {
+          returnobj = item;
+        }
+      });
     });
     return returnobj;
   }
