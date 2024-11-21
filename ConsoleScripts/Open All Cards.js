@@ -74,6 +74,34 @@
     return json;
   }
 
+  let bvl = [];
+
+  async function setBVL() {
+    let response = await fetch(
+      "https://opensheet.elk.sh/1tzHjKpu2gYlHoCePjp6bFbKBGvZpwDjiRzT9ZUfNwbY/Alphabetical",
+    );
+    bvl = await response.json();
+    return;
+  }
+
+  function rarity_backup(spreadsheet, namefield, rarityfield, skinname) {
+    let found = false;
+    let rarity = "Unknown-Rarity";
+    spreadsheet.forEach((listitem) => {
+      if (listitem && listitem[namefield] && listitem[rarityfield]) {
+        if (
+          found == false &&
+          listitem[namefield] == skinname &&
+          Object.keys(coloroutput).includes(listitem[rarityfield].toUpperCase())
+        ) {
+          found = true;
+          rarity = listitem[rarityfield];
+        }
+      }
+    });
+    return rarity;
+  }
+
   //this code opens cards
   async function openCard(cardid) {
     let bodyobj = {};
@@ -147,18 +175,19 @@
   //This code displays the result of the container ingame + in the console
   function ingameShowcase(message, rarity, name) {
     rarity = translations[rarity];
+
     if (rarity == undefined) {
-      rarity = "Unknown-Rarity";
+      rarity = rarity_backup(bvl, "Skin Name", "Rarity", name);
     }
     const text = `${rarity} ${message} from: ${name}`;
-    const style = `color: #${coloroutput[rarity] || coloroutput.DEFAULT}`;
+    const style = `color: #${coloroutput[rarity.toUpperCase()] || coloroutput.DEFAULT}`;
     console.log(`%c${text}`, style);
 
     const elem = document.createElement("div");
     elem.classList.add("vue-notification-wrapper");
     elem.style =
       "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
-    elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text" style="color:#${coloroutput[rarity] || coloroutput.DEFAULT}">${text}</span></div>`;
+    elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text" style="color:#${coloroutput[rarity.toUpperCase()] || coloroutput.DEFAULT}">${text}</span></div>`;
     elem.onclick = function () {
       try {
         elem.remove();
@@ -295,6 +324,7 @@
     if (!cards[0]) {
       return;
     }
+    await setBVL();
     let inventory = await fetchInventory();
     automatic_microwaves(inventory);
 
@@ -311,8 +341,8 @@
     let counter = 0;
     let interval = setInterval(async () => {
       let cardresult = await openCard(cards[counter]["cardid"]);
-      let resultRarity = cardresult[translations["rarity"]];
       let resultName = cardresult[translations["name"]];
+      let resultRarity = cardresult[translations["rarity"]];
       if (resultName) {
         ingameShowcase(resultName, resultRarity, cards[counter]["name"]);
         if (translations[resultRarity] == "MYTHICAL") {
