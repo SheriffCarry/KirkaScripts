@@ -61,7 +61,7 @@
 
   //This code fetches and returns the inventory
   async function fetchInventory() {
-    const response = await fetch(
+    let response = await fetch(
       `https://api2.kirka.io/api/${translations["inventory"]}`,
       {
         headers: {
@@ -70,7 +70,8 @@
         },
       },
     );
-    return await response.json();
+    let json = await response.json();
+    return json;
   }
 
   //this code opens cards
@@ -226,6 +227,43 @@
     return counter;
   }
 
+  function automatic_microwaves(inventory) {
+    //item in the inventory request
+    inventory.forEach((item) => {
+      Object.keys(item).forEach((key) => {
+        if (typeof item[key] == "object") {
+          translations["item"] = key;
+        }
+      });
+    });
+    //name in the inventory request
+    inventory.forEach((item) => {
+      Object.keys(item[translations["item"]]).forEach((key) => {
+        if (
+          (typeof item[translations["item"]][key] == "string" &&
+            item[translations["item"]][key] == "Elizabeth") ||
+          item[translations["item"]][key] == "James"
+        ) {
+          translations["name"] = key;
+        }
+      });
+    });
+    //id in the inventory request
+    inventory.forEach((item) => {
+      Object.keys(item[translations["item"]]).forEach((key) => {
+        if (
+          (typeof item[translations["item"]][key] == "string" &&
+            item[translations["item"]][key] ==
+              "a1055b22-18ca-4cb9-8b39-e46bb0151185") ||
+          item[translations["item"]][key] ==
+            "6be53225-952a-45d7-a862-d69290e4348e"
+        ) {
+          translations["id"] = key;
+        }
+      });
+    });
+  }
+
   //This processes my cardskipper variable
   function processCardskipper(cardskipper, inventory) {
     try {
@@ -256,6 +294,7 @@
       return;
     }
     let inventory = await fetchInventory();
+    automatic_microwaves(inventory);
 
     cardskipper = processCardskipper(cardskipper, inventory);
 
