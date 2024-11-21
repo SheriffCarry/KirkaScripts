@@ -313,7 +313,7 @@
       let cardresult = await openCard(cards[counter]["cardid"]);
       let resultRarity = cardresult[translations["rarity"]];
       let resultName = cardresult[translations["name"]];
-      if (resultRarity) {
+      if (resultName) {
         ingameShowcase(resultName, resultRarity, cards[counter]["name"]);
         if (translations[resultRarity] == "MYTHICAL") {
           confettiAnimation();
