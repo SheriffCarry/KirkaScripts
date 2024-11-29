@@ -1,12 +1,16 @@
 // ==UserScript==
 // @name         Custom Skin Link
 // @description  Allows you to easily change the skin link
-// @version      0.2
+// @version      3
 // @author       SheriffCarry
 // @github       https://api.github.com/repos/SheriffCarry/KirkaScripts/contents/Userscript/Custom%20Skin%20Link.js
 // ==/UserScript==
 
 //Runs on the original BKC custom skin link feature (made by infi and boden)
+let localStoragekey1 =
+  "SETTINGS___SETTING/PLAYERS___SETTING/RENDER_TEXTURE___SETTING";
+let localStoragekey2 =
+  "SETTINGS___SETTING/PLAYERS___SETTING/RENDER_COLOR___SETTING";
 
 //HTML stuff
 let option_group = document.createElement("div");
@@ -162,6 +166,20 @@ let d_canvas_colorpicker;
 let d_colorpicker_head;
 let d_colorpicker_body;
 let canvas_loaded = false;
+function fixLocalStorage() {
+  if (!localStorage[localStoragekey1]) {
+    localStorage[localStoragekey1] = "1";
+  }
+  if (localStorage[localStoragekey1] != "1") {
+    localStorage[localStoragekey1] = "1";
+  }
+  if (!localStorage[localStoragekey2]) {
+    localStorage[localStoragekey2] = "#ffffff";
+  }
+  if (localStorage[localStoragekey2] != "#ffffff") {
+    localStorage[localStoragekey2] = "#ffffff";
+  }
+}
 
 document.addEventListener("DOMContentLoaded", async () => {
   setTimeout(() => {
@@ -300,9 +318,13 @@ function startfunction() {
     });
     if (localStorage.csl_enabled == "true") {
       d_csl_enabled.checked = true;
+      fixLocalStorage();
     }
     d_csl_enabled.addEventListener("change", function (event) {
       localStorage.csl_enabled = d_csl_enabled.checked;
+      if (localStorage.csl_enabled == "true") {
+        fixLocalStorage();
+      }
     });
     let img_display = new Image();
     let img = new Image();
