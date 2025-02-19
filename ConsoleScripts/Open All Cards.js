@@ -1,4 +1,5 @@
 (async () => {
+  let git_base = "SheriffCarry";
   //Card Open delay
   let openingdelay = 2000; //2000 = 2.0s, make it higher to be more safe. (Recently some people have experienced issues with opening cards... Higher delay could fix it)
   let cards;
@@ -25,7 +26,7 @@
   };
 
   let translations_req = await fetch(
-    "https://raw.githubusercontent.com/SheriffCarry/KirkaScripts/main/ConsoleScripts/microwaves.json",
+    `https://raw.githubusercontent.com/${git_base}/KirkaScripts/main/ConsoleScripts/microwaves.json`
   );
   let translations = await translations_req.json();
 
@@ -49,13 +50,13 @@
   function logCredits() {
     console.log(
       "%cMade by carrysheriff/SheriffCarry discord: @carrysheriff",
-      "color: #000000;background-color: #FFFFFF;font-size: large;",
+      "color: #000000;background-color: #FFFFFF;font-size: large;"
     );
     console.log(
-      "If you only want a specific chest to be opened, just delete the chest from the array at the top of the script",
+      "If you only want a specific chest to be opened, just delete the chest from the array at the top of the script"
     );
     console.log(
-      "https://github.com/SheriffCarry/KirkaScripts/blob/main/ConsoleScripts/OpenAllCards_live_updating.js this code is live updatin",
+      `https://github.com/${git_base}/KirkaScripts/blob/main/ConsoleScripts/OpenAllCards_live_updating.js this code is live updatin`
     );
   }
 
@@ -68,7 +69,7 @@
           accept: "application/json",
           authorization: `Bearer ${localStorage.token}`,
         },
-      },
+      }
     );
     let json = await response.json();
     return json;
@@ -78,7 +79,7 @@
 
   async function setBVL() {
     let response = await fetch(
-      "https://opensheet.elk.sh/1tzHjKpu2gYlHoCePjp6bFbKBGvZpwDjiRzT9ZUfNwbY/Alphabetical",
+      "https://opensheet.elk.sh/1tzHjKpu2gYlHoCePjp6bFbKBGvZpwDjiRzT9ZUfNwbY/Alphabetical"
     );
     bvl = await response.json();
     return;
@@ -116,7 +117,7 @@
           "content-type": "application/json;charset=UTF-8",
         },
         body: JSON.stringify(bodyobj),
-      },
+      }
     );
     let json = await response.json();
     let returnobj = {};
@@ -180,14 +181,18 @@
       rarity = rarity_backup(bvl, "Skin Name", "Rarity", name);
     }
     const text = `${rarity} ${message} from: ${name}`;
-    const style = `color: #${coloroutput[rarity.toUpperCase()] || coloroutput.DEFAULT}`;
+    const style = `color: #${
+      coloroutput[rarity.toUpperCase()] || coloroutput.DEFAULT
+    }`;
     console.log(`%c${text}`, style);
 
     const elem = document.createElement("div");
     elem.classList.add("vue-notification-wrapper");
     elem.style =
       "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
-    elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text" style="color:#${coloroutput[rarity.toUpperCase()] || coloroutput.DEFAULT}">${text}</span></div>`;
+    elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text" style="color:#${
+      coloroutput[rarity.toUpperCase()] || coloroutput.DEFAULT
+    }">${text}</span></div>`;
     elem.onclick = function () {
       try {
         elem.remove();
