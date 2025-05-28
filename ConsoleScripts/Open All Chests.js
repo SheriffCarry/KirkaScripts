@@ -24,6 +24,7 @@
   }
 
   let coloroutput = {
+    PARANORMAL: "000000",
     MYTHICAL: "c20025",
     LEGENDARY: "feaa37",
     EPIC: "cd2afc",
@@ -33,14 +34,16 @@
   };
 
   let translations_req = await fetch(
-    `https://raw.githubusercontent.com/${git_base}/KirkaScripts/main/ConsoleScripts/microwaves.json`
+    `https://raw.githubusercontent.com/${git_base}/KirkaScripts/main/ConsoleScripts/microwaves.json`,
   );
   let translations = await translations_req.json();
 
   //This Part reverses my translations
   Object.keys(translations).forEach((item) => {
     let translationItem = translations[item];
-    if (item == "MYTHICAL") {
+    if (item == "PARANORMAL") {
+      translations[translationItem] = item;
+    } else if (item == "MYTHICAL") {
       translations[translationItem] = item;
     } else if (item == "LEGENDARY") {
       translations[translationItem] = item;
@@ -57,13 +60,13 @@
   function logCredits() {
     console.log(
       "%cMade by carrysheriff/SheriffCarry discord: @carrysheriff",
-      "color: #000000;background-color: #FFFFFF;font-size: large;"
+      "color: #000000;background-color: #FFFFFF;font-size: large;",
     );
     console.log(
-      "If you only want a specific chest to be opened, just delete the chest from the array at the top of the script"
+      "If you only want a specific chest to be opened, just delete the chest from the array at the top of the script",
     );
     console.log(
-      `https://github.com/${git_base}/KirkaScripts/blob/main/ConsoleScripts/OpenAllChests_live_updating.js this code is live updating`
+      `https://github.com/${git_base}/KirkaScripts/blob/main/ConsoleScripts/OpenAllChests_live_updating.js this code is live updating`,
     );
   }
 
@@ -76,7 +79,7 @@
           accept: "application/json",
           authorization: `Bearer ${localStorage.token}`,
         },
-      }
+      },
     );
     let json = await response.json();
     return json;
@@ -86,7 +89,7 @@
 
   async function setBVL() {
     let response = await fetch(
-      "https://opensheet.elk.sh/1tzHjKpu2gYlHoCePjp6bFbKBGvZpwDjiRzT9ZUfNwbY/Alphabetical"
+      "https://opensheet.elk.sh/1tzHjKpu2gYlHoCePjp6bFbKBGvZpwDjiRzT9ZUfNwbY/Alphabetical",
     );
     bvl = await response.json();
     return;
@@ -124,7 +127,7 @@
           "content-type": "application/json;charset=UTF-8",
         },
         body: JSON.stringify(bodyobj),
-      }
+      },
     );
     return await response.json();
   }
@@ -354,7 +357,10 @@
       let resultRarity = chestresult[translations["rarity"]];
       if (resultName) {
         ingameShowcase(resultName, resultRarity, chests[counter]["name"]);
-        if (translations[resultRarity] == "MYTHICAL") {
+        if (
+          translations[resultRarity] == "MYTHICAL" ||
+          translations[resultRarity] == "PARANORMAL"
+        ) {
           confettiAnimation();
         }
       } else if (chestresult["code"] == 9910) {
