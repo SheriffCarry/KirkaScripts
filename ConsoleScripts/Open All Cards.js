@@ -34,19 +34,7 @@
   //This Part reverses my translations
   Object.keys(translations).forEach((item) => {
     let translationItem = translations[item];
-    if (item == "PARANORMAL") {
-      translations[translationItem] = item;
-    } else if (item == "MYTHICAL") {
-      translations[translationItem] = item;
-    } else if (item == "LEGENDARY") {
-      translations[translationItem] = item;
-    } else if (item == "EPIC") {
-      translations[translationItem] = item;
-    } else if (item == "RARE") {
-      translations[translationItem] = item;
-    } else if (item == "COMMON") {
-      translations[translationItem] = item;
-    }
+    translations[translationItem] = item;
   });
 
   //This code logs credits
