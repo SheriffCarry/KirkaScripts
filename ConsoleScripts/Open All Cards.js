@@ -44,7 +44,7 @@
       "color: #000000;background-color: #FFFFFF;font-size: large;",
     );
     console.log(
-      "If you only want a specific chest to be opened, just delete the chest from the array at the top of the script",
+      "If you only want a specific card to be opened, just delete the card from the array at the top of the script",
     );
     console.log(
       `https://github.com/${git_base}/KirkaScripts/blob/main/ConsoleScripts/OpenAllCards_live_updating.js this code is live updatin`,
@@ -148,7 +148,7 @@
     end_elem.classList = "vue-notification-wrapper";
     end_elem.style =
       "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
-    end_elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text">Finished running</span></div>`;
+    end_elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text">Finished running, check console for more details</span></div>`;
     end_elem.onclick = function () {
       try {
         end_elem.remove();
@@ -309,6 +309,52 @@
       return cardskipper;
     }
   }
+  
+  function logSummary(itemsByRarity, colorMap) {
+    console.log(
+      "%c--- Summary ---",
+      "color: #FFFFFF; background-color: #000000; font-weight: bold; font-size: 1.2em; padding: 2px;",
+    );
+
+    const rarityOrder = [
+      "PARANORMAL",
+      "MYTHICAL",
+      "LEGENDARY",
+      "EPIC",
+      "RARE",
+      "COMMON",
+    ];
+
+    const sortedRarities = Object.keys(itemsByRarity).sort((a, b) => {
+      const indexA = rarityOrder.indexOf(a);
+      const indexB = rarityOrder.indexOf(b);
+
+      if (indexA === -1 && indexB === -1) return 0;
+      if (indexA === -1) return 1;
+      if (indexB === -1) return -1;
+      return indexA - indexB;
+    });
+
+    for (const rarity of sortedRarities) {
+      const items = itemsByRarity[rarity];
+      if (!items || items.length === 0) continue;
+
+      const itemCounts = items.reduce((acc, item) => {
+        acc[item] = (acc[item] || 0) + 1;
+        return acc;
+      }, {});
+
+      const itemsString = Object.entries(itemCounts)
+        .map(([name, count]) => `${name} x${count}`)
+        .join(", ");
+
+      const totalCount = items.length;
+      const color = colorMap[rarity] || colorMap.DEFAULT;
+      const logText = `${totalCount}x ${rarity}: ${itemsString}`;
+
+      console.log(`%c${logText}`, `color: #${color}; font-weight: bold;`);
+    }
+  }
 
   let cardskipper = new Array(cards.length).fill(2);
   try {
@@ -334,6 +380,7 @@
       document.head.appendChild(script);
     }
 
+    let openedItems = {};
     let counter = 0;
     let interval = setInterval(async () => {
       let cardresult = await openCard(cards[counter]["cardid"]);
@@ -341,6 +388,23 @@
       let resultRarity = cardresult[translations["rarity"]];
       if (resultName) {
         ingameShowcase(resultName, resultRarity, cards[counter]["name"]);
+		
+        let translatedRarity = translations[resultRarity];
+        if (translatedRarity == undefined) {
+          translatedRarity = rarity_backup(
+            bvl,
+            "Skin Name",
+            "Rarity",
+            resultName,
+          );
+        }
+        translatedRarity = translatedRarity.toUpperCase();
+
+        if (!openedItems[translatedRarity]) {
+          openedItems[translatedRarity] = [];
+        }
+        openedItems[translatedRarity].push(resultName);
+		
         if (
           translations[resultRarity] == "MYTHICAL" ||
           translations[resultRarity] == "PARANORMAL"
@@ -361,6 +425,7 @@
         clearInterval(interval);
         console.log("Finished Running");
         ingameShowcase_end();
+		logSummary(openedItems, coloroutput);
       }
     }, openingdelay);
   })();
