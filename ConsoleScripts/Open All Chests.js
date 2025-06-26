@@ -146,7 +146,7 @@
     end_elem.classList = "vue-notification-wrapper";
     end_elem.style =
       "transition-timing-function: ease; transition-delay: 0s; transition-property: all;";
-    end_elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text">Finished running</span></div>`;
+    end_elem.innerHTML = `<div data-v-3462d80a="" data-v-460e7e47="" class="alert-default"><span data-v-3462d80a="" class="text">Finished running, check console for more details</span></div>`;
     end_elem.onclick = function () {
       try {
         end_elem.remove();
@@ -314,6 +314,52 @@
     }
   }
 
+  function logSummary(itemsByRarity, colorMap) {
+    console.log(
+      "%c--- Summary ---",
+      "color: #FFFFFF; background-color: #000000; font-weight: bold; font-size: 1.2em; padding: 2px;",
+    );
+
+    const rarityOrder = [
+      "PARANORMAL",
+      "MYTHICAL",
+      "LEGENDARY",
+      "EPIC",
+      "RARE",
+      "COMMON",
+    ];
+
+    const sortedRarities = Object.keys(itemsByRarity).sort((a, b) => {
+      const indexA = rarityOrder.indexOf(a);
+      const indexB = rarityOrder.indexOf(b);
+
+      if (indexA === -1 && indexB === -1) return 0;
+      if (indexA === -1) return 1;
+      if (indexB === -1) return -1;
+      return indexA - indexB;
+    });
+
+    for (const rarity of sortedRarities) {
+      const items = itemsByRarity[rarity];
+      if (!items || items.length === 0) continue;
+
+      const itemCounts = items.reduce((acc, item) => {
+        acc[item] = (acc[item] || 0) + 1;
+        return acc;
+      }, {});
+
+      const itemsString = Object.entries(itemCounts)
+        .map(([name, count]) => `${name} x${count}`)
+        .join(", ");
+
+      const totalCount = items.length;
+      const color = colorMap[rarity] || colorMap.DEFAULT;
+      const logText = `${totalCount}x ${rarity}: ${itemsString}`;
+
+      console.log(`%c${logText}`, `color: #${color}; font-weight: bold;`);
+    }
+  }
+
   let chestskipper = new Array(chests.length).fill(2);
   try {
     chestskipper[0] = 0;
@@ -338,6 +384,7 @@
       document.head.appendChild(script);
     }
 
+    let openedItems = {};
     let counter = 0;
     let interval = setInterval(async () => {
       let chestresult = await openChest(chests[counter]["chestid"]);
@@ -345,6 +392,23 @@
       let resultRarity = chestresult[translations["rarity"]];
       if (resultName) {
         ingameShowcase(resultName, resultRarity, chests[counter]["name"]);
+
+        let translatedRarity = translations[resultRarity];
+        if (translatedRarity == undefined) {
+          translatedRarity = rarity_backup(
+            bvl,
+            "Skin Name",
+            "Rarity",
+            resultName,
+          );
+        }
+        translatedRarity = translatedRarity.toUpperCase();
+
+        if (!openedItems[translatedRarity]) {
+          openedItems[translatedRarity] = [];
+        }
+        openedItems[translatedRarity].push(resultName);
+
         if (
           translations[resultRarity] == "MYTHICAL" ||
           translations[resultRarity] == "PARANORMAL"
@@ -365,6 +429,7 @@
         clearInterval(interval);
         console.log("Finished Running");
         ingameShowcase_end();
+        logSummary(openedItems, coloroutput);
       }
     }, openingdelay);
   })();
